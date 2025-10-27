@@ -26,7 +26,7 @@ def id3(dataset, attributes, label_key):
         "default": Counter(labels).most_common(1)[0][0],
     }
     
-    values = sorted({row[best_attr] for row in dataset})
+    values = sorted({row.get(best_attr, None) for row in dataset})
     remaining = [a for a in attributes if a != best_attr]
 
     for v in values:
