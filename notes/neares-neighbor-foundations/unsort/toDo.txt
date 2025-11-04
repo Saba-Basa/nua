@@ -1,0 +1,54 @@
+# TODO: Nearest Neighbor Foundations
+
+## 1. Norms and Distances
+- [x] Define ℓₚ norms (L₁, L₂, L∞)
+- [x] Show relation between norm and distance metric
+- [x] Verify metric axioms (nonnegativity, identity, symmetry, triangle inequality)
+- [ ] Illustrate geometric shapes (unit balls for different p)
+- [ ] Examples in low dimensions (ℝ² visualization)
+
+---
+
+## 2. Dimensions and Complexity
+- [ ] Explain intrinsic vs. embedding dimension
+- [ ] Define doubling dimension (λ, log₂ λ)
+- [ ] Derive packing and covering numbers
+- [ ] Discuss the curse of dimensionality (distance concentration)
+- [ ] Show implications for search complexity and space partitioning
+
+---
+
+## 3. kNN Rules
+- [ ] Formalize distance measures and neighborhood set Nₖ(x)
+- [ ] Define classification rule (majority voting)
+- [ ] Define weighted classification (distance-weighted voting)
+- [ ] Define regression rule (average of neighbors)
+- [ ] Analyze bias–variance behavior of kNN
+- [ ] Discuss normalization and preprocessing effects
+
+---
+
+## 4. Tree-Based Search Structures
+- [ ] kd-tree: axis-aligned splits
+- [ ] Ball tree: center–radius grouping
+- [ ] Cover tree: scale-based hierarchy
+- [ ] Describe pruning criteria via triangle inequality
+- [ ] Analyze performance vs. dimensionality
+
+---
+
+## 5. Locality-Sensitive Hashing (LSH)
+- [ ] Define approximate nearest neighbor problem
+- [ ] Introduce p-/s-stable hash families
+- [ ] Derive sensitivity condition (similar ⇒ collide w.h.p.)
+- [ ] Compute collision probability formulas
+- [ ] Define ρ (rho) and analyze trade-offs
+- [ ] Explain L, k, and performance bounds
+
+---
+
+## 6. Implementation & Evaluation
+- [ ] Implement brute-force kNN baseline
+- [ ] Compare with tree-based and LSH-based search
+- [ ] Measure accuracy, recall, query time
+- [ ] Visualize effects of dimensionality on performance

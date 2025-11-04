@@ -1,0 +1,19 @@
+#Norms and Distances
+
+Norms and Distances
+
+The ℓₚ norm measures the length or magnitude of a vector in d-dimensional space, written as ℝᵈ.
+
+ℓₚ refers to a family of mathematical rules, each one describing how to measure the length (or magnitude) of a vector.
+
+Norm → A norm is a function that assigns a single non-negative number to a vector.
+It tells you “how long” or “how big” the vector is.
+
+
+
+
+#unit balls
+#norm equivalence - finit dimension
+#Nearest-neightbor implications
+#dual norms and hölder
+#product metrics
