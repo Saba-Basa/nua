@@ -4,8 +4,11 @@
 - [x] Define ℓₚ norms (L₁, L₂, L∞)
 - [x] Show relation between norm and distance metric
 - [x] Verify metric axioms (nonnegativity, identity, symmetry, triangle inequality)
-- [ ] Illustrate geometric shapes (unit balls for different p)
-- [ ] Examples in low dimensions (ℝ² visualization)
+- [x] p1
+- [x] p2
+- [x] pinf
+- [x] Illustrate geometric shapes (unit balls for different p)
+- [x] Examples in low dimensions (ℝ² visualization)
 
 ---
 
