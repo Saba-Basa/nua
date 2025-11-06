@@ -1,0 +1,78 @@
+Setup. Let V = ℝᵈ.
+
+Definition (Norm). A map ‖·‖ : V → [0, ∞) with
+(i) ‖x‖ = 0 ⇔ x = 0,
+(ii) ‖αx‖ = |α|‖x‖ for α ∈ ℝ,
+(iii) ‖x + y‖ ≤ ‖x‖ + ‖y‖.
+
+Definition (Metric induced by a norm).
+d(x, y) := ‖x − y‖. Then d is a metric on V.
+
+Examples (ℓₚ norms on ℝᵈ).
+For 1 ≤ p < ∞:
+‖x‖ₚ = ( Σ |xᵢ|ᵖ )^(1/p),  i = 1,…,d.
+
+For p = ∞:
+‖x‖∞ = max₁≤ᵢ≤d |xᵢ|.
+
+Induced distances:
+dₚ(x, y) = ‖x − y‖ₚ.
+
+
+Interpretation.
+We work in a vector space V = ℝᵈ, where each point is a d-tuple of numbers.
+To compare two points x, y ∈ V, we need a rule that tells us how far apart they are.
+The norm provides this rule, it assigns a nonnegative length to every vector.
+
+Geometric meaning.
+‖x‖ is the length of the vector x.
+‖x − y‖ is the distance between the points x and y.
+Thus, the norm defines the geometry of the space.
+
+Example.
+Let each point x ∈ ℝᵈ represent a patient.
+Each coordinate xᵢ is a medical feature such as blood pressure, heart rate, or temperature.
+The Euclidean distance ‖x − y‖₂ then measures how different two patients are in their vital signs.
+
+Interpretation in data analysis.
+A small distance means two patients have similar measurements.
+A large distance means their features differ strongly.
+By defining distance this way, we can apply geometric reasoning to data.
+For example, to find the nearest neighbor, cluster similar patients, or detect anomalies.
+
+Summary.
+The norm is the foundation for defining distance.
+The distance determines similarity.
+Similarity determines how we compare, group, or predict data points.
+This chain: norm → distance → similarity, underlies all nearest-neighbor methods.
+
+#degree of freedom
+A degree of freedom is one independent direction in which data can change
+without being determined by other variables.
+
+Formally, in ℝᵈ each coordinate axis represents one potential degree of freedom.
+But in real data, not all coordinates vary independently.
+The number of truly independent variations gives the intrinsic dimension.
+
+Example: 
+If each point represents a patient with (height, weight, age, blood pressure),
+these four features form a 4D space.
+But height and weight are correlated, they vary together.
+So the data may effectively vary along only 3 independent directions: 3 degrees of freedom.
+
+#intrinsic dimension
+Once we understand degrees of freedom, we can define the intrinsic dimension:
+it is the number of independent directions (degrees of freedom) 
+that describe the meaningful variation in the data.
+
+
+#TODO
+why intrinsic dimension matters, how it can vary locally, and what effect it has on NN
+
+#manifold perspective
+#embedding vs intrinsic dimension
+#local intrinsic dimensionality
+#relation to doubling dimension
+#packing and covering numbers
+#curse of dimensionality
+#impact on nearest-neighbor complexity
