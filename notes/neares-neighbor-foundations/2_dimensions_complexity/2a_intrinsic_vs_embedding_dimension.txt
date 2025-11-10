@@ -82,9 +82,64 @@ In your own words:
 How are the data points arranged inside the full d-dimensional space?
 Describe the shape/structure you imagine when you hear "the data lie on a manifold".
 
+Q1.1: what is a real coordinate 
+
+Start with the real line ℝ.  
+Each point on this line is described by one real number x₁.  
+If we add a second line for another direction,  
+a point now needs two numbers (x₁, x₂) to locate it.  
+Each of these numbers is called a coordinate.  
+A real coordinate is therefore one real number  
+that tells how far a point lies along a given axis in space.
+
+Q1.2: What does it mean to have all points with d real coordinates?
+
+If one number gives position on a line,  
+then two numbers describe position on a flat plane.  
+Three numbers describe a point in space.  
+If we keep adding numbers, we get more directions to move.  
+All possible points made from d real numbers form the space ℝᵈ.  
+So ℝᵈ means every point that can be written as (x₁, x₂, …, x_d).
+
+
+Q1.3: What is a dimension?
+
+Each new coordinate axis adds one direction to move.  
+One axis gives a line (1D).  
+Two axes make a plane (2D).  
+Three axes make space (3D).  
+The number of axes is the dimension d.  
+In ℝᵈ, d tells how many independent directions exist.  
+Each axis is one degree of freedom for the point’s position.
+
+Q1.4: What is a manifold?
+
+A manifold is a smooth shape that can bend inside a larger space ℝᵈ.  
+It has its own dimension m, which is how many directions exist on the shape itself.  
+For example, a surface in ℝ³ has m = 2 and d = 3.  
+In datasets, the data points often lie close to such a lower-dimensional manifold.
+
+
+Q1: What does it mean that the data "lie on an m-dimensional manifold M ⊂ ℝᵈ"?
+"M is a subset of R superscript d"
+
+ℝᵈ = { (x₁, x₂, …, x_d) | each xᵢ is a real number }
+"the set of all points with d real coordinates"
+
+In your own words:
+How are the data points arranged inside the full d-dimensional space?
+Describe the shape/structure you imagine when you hear "the data lie on a manifold".
+
+The data live in a large space with d coordinates,  
+but they vary only along m independent directions.  
+These directions form a smooth m-dimensional manifold M inside ℝᵈ.  
+So the data occupy only a small, structured part of the full space.
 
 
 
+
+
+-----
 
 the number of neighbors within radius r grows approximately as rᵐ.  
 This relation governs how distances and densities scale.
@@ -97,6 +152,8 @@ In such cases, nearest-neighbor relations and geometric algorithms become unstab
 
 The intrinsic dimension therefore determines how distances behave  
 and how effectively geometry-based methods operate in high-dimensional data.
+
+----
 
 
 #manifold perspective
