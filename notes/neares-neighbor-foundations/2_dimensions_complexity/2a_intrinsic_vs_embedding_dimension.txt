@@ -1,0 +1,277 @@
+Setup. Let V = ℝᵈ.
+
+Definition (Norm). A map ‖·‖ : V → [0, ∞) with
+(i) ‖x‖ = 0 ⇔ x = 0,
+(ii) ‖αx‖ = |α|‖x‖ for α ∈ ℝ,
+(iii) ‖x + y‖ ≤ ‖x‖ + ‖y‖.
+
+Definition (Metric induced by a norm).
+d(x, y) := ‖x − y‖. Then d is a metric on V.
+
+Examples (ℓₚ norms on ℝᵈ).
+For 1 ≤ p < ∞:
+‖x‖ₚ = ( Σ |xᵢ|ᵖ )^(1/p),  i = 1,…,d.
+
+For p = ∞:
+‖x‖∞ = max₁≤ᵢ≤d |xᵢ|.
+
+Induced distances:
+dₚ(x, y) = ‖x − y‖ₚ.
+
+
+Interpretation.
+We work in a vector space V = ℝᵈ, where each point is a d-tuple of numbers.
+To compare two points x, y ∈ V, we need a rule that tells us how far apart they are.
+The norm provides this rule, it assigns a nonnegative length to every vector.
+
+Geometric meaning.
+‖x‖ is the length of the vector x.
+‖x − y‖ is the distance between the points x and y.
+Thus, the norm defines the geometry of the space.
+
+Example.
+Let each point x ∈ ℝᵈ represent a patient.
+Each coordinate xᵢ is a medical feature such as blood pressure, heart rate, or temperature.
+The Euclidean distance ‖x − y‖₂ then measures how different two patients are in their vital signs.
+
+Interpretation in data analysis.
+A small distance means two patients have similar measurements.
+A large distance means their features differ strongly.
+By defining distance this way, we can apply geometric reasoning to data.
+For example, to find the nearest neighbor, cluster similar patients, or detect anomalies.
+
+Summary.
+The norm is the foundation for defining distance.
+The distance determines similarity.
+Similarity determines how we compare, group, or predict data points.
+This chain: norm → distance → similarity, underlies all nearest-neighbor methods.
+
+#degree of freedom
+A degree of freedom is one independent direction in which data can change
+without being determined by other variables.
+
+Formally, in ℝᵈ each coordinate axis represents one potential degree of freedom.
+But in real data, not all coordinates vary independently.
+The number of truly independent variations gives the intrinsic dimension.
+
+Example: 
+If each point represents a patient with (height, weight, age, blood pressure),
+these four features form a 4D space.
+But height and weight are correlated, they vary together.
+So the data may effectively vary along only 3 independent directions: 3 degrees of freedom.
+
+#intrinsic dimension
+Once we understand degrees of freedom, we can define the intrinsic dimension:
+it is the number of independent directions (degrees of freedom) 
+that describe the meaningful variation in the data.
+
+# Why Intrinsic Dimension Matters
+
+If data lie on an m-dimensional manifold M ⊂ ℝᵈ,  
+then M is a smooth surface of dimension m inside the d-dimensional real space ℝᵈ.  
+Here d is the number of coordinates in the ambient space,  
+and m is the number of independent directions in which the data can vary (m ≤ d). 
+
+---
+
+Q1: What does it mean that the data "lie on an m-dimensional manifold M ⊂ ℝᵈ"?
+"M is a subset of R superscript d"
+
+ℝᵈ = { (x₁, x₂, …, x_d) | each xᵢ is a real number }
+"the set of all points with d real coordinates"
+
+In your own words:
+How are the data points arranged inside the full d-dimensional space?
+Describe the shape or structure you imagine when you hear "the data lie on a manifold".
+
+---
+
+Q1.1: What is a real coordinate?  
+Start with the real line ℝ.  
+Each point on this line is described by one real number x₁.  
+If we add a second line for another direction,  
+a point now needs two numbers (x₁, x₂) to locate it.  
+Each number is called a coordinate.  
+A real coordinate is therefore one real number  
+that tells how far a point lies along a given axis.
+
+---
+
+Q1.2: What does it mean to have all points with d real coordinates?  
+One number gives position on a line,  
+two describe position on a plane,  
+three describe a point in space.  
+If we keep adding numbers, we add directions to move.  
+All possible points made from d real numbers form the space ℝᵈ.  
+So ℝᵈ means every point that can be written as (x₁, x₂, …, x_d).
+
+---
+
+Q1.3: What is a dimension?  
+Each new coordinate axis adds one independent direction.  
+One axis gives a line (1D).  
+Two axes make a plane (2D).  
+Three axes make space (3D).  
+The number of axes is the dimension d.  
+Each axis is one degree of freedom for a point’s position.
+
+---
+
+Q1.4: What is a manifold?  
+A manifold is a space that, around every point, looks like flat space ℝᵐ.  
+It may curve inside a larger space ℝᵈ,  
+but locally it can be described by m real coordinates.  
+Each small region behaves like ℝᵐ,  
+and all such regions together form a continuous whole.  
+Formally, every point has a neighborhood homeomorphic to an open subset of ℝᵐ.  
+If all local descriptions fit smoothly, the space is called a smooth manifold.
+
+---
+
+Q1.4.1: What is a chart?  
+A chart is a local map that assigns coordinates to a small region of a manifold.  
+It tells how to describe points there using m numbers, just like in ℝᵐ.  
+Formally, a chart is a pair (U, φ),  
+where U is an open set on the manifold,  
+and φ : U → ℝᵐ is a homeomorphism onto its image.  
+This means the map and its inverse are continuous,  
+so the local structure matches smoothly.
+
+---
+
+Q1.4.2: What is an atlas?  
+An atlas is a collection of charts that together cover the whole manifold.  
+Each chart handles one region,  
+and where two charts overlap, their coordinates agree smoothly.  
+All charts fitting together form the atlas of the manifold.
+
+---
+
+Q1.4.3: What does homeomorphic mean?  
+Two spaces are homeomorphic if their points can be matched one-to-one  
+by a map that is continuous in both directions.  
+Such a map is a bijective continuous map with a continuous inverse.  
+Intuitively, one space can be stretched or bent into the other  
+without cutting or gluing anything.  
+They have the same overall shape and connectivity.
+
+---
+
+Summary of Q1:  
+The data live in a large space with d coordinates  
+but vary only along m independent directions.  
+These directions form a smooth m-dimensional manifold M inside ℝᵈ.  
+So the data occupy only a small, structured part of the full space.
+
+---
+
+Q2: Why does the intrinsic dimension m matter?
+
+Q2.1: What does intrinsic mean?  
+Intrinsic means a property that can be measured or defined  
+entirely from within the object itself,  
+without referring to anything outside it.  
+Example: the surface area of a sphere is intrinsic,  
+but its position in space is not.
+
+---
+
+Q2.2: What is meant by “dimension” in this context?  
+Dimension tells how many independent directions exist within a space.  
+In a manifold M, it is the minimum number of coordinates  
+needed to describe points locally on M.
+
+---
+
+Q2.3: What does intrinsic dimension mean then?  
+Intrinsic dimension is the number of directions that exist within the data itself,  
+without considering extra coordinates from the surrounding space ℝᵈ.  
+It shows the true degrees of freedom of the data.
+
+---
+
+Q2.4: How can data have a smaller intrinsic dimension than the space they are in?  
+Because the data may only vary along a few directions inside the larger space.  
+For example, points on a 2D surface in ℝ³ fill only that surface, not the whole space.  
+So although the ambient space has d = 3, the intrinsic dimension is m = 2.
+
+---
+
+Q2.5: Why does the intrinsic dimension matter?  
+It shows the true complexity of the data.  
+If m is small, nearby points stay meaningfully close,  
+and distances capture structure.  
+If m is large, points spread out and distances become less useful,  
+making it harder to find patterns or neighbors.
+
+
+Q3: How does intrinsic dimension affect distances and neighborhoods?
+
+Q3.1: How do distances scale with radius r on an m-dimensional manifold?  
+Q3.2: Why do distances lose meaning in high dimensions?  
+Q3.3: How does this affect nearest-neighbor relations and algorithms?
+
+Q4: How can intrinsic dimension vary locally?
+
+Q4.1: What does local intrinsic dimension mean?  
+Q4.2: How can curvature or structure change the local value of m?  
+Q4.3: Why does local variation in m matter for data analysis?
+
+Q5: How can we estimate intrinsic dimension in practice?
+
+Q5.1: What geometric methods can estimate m?  
+Q5.2: What statistical methods can estimate m?  
+Q5.3: How does noise influence intrinsic dimension estimates?  
+Q5.4: How do manifold learning algorithms use estimates of m?
+
+Q6: What is the effect of intrinsic dimension on learning and generalization?
+
+Q6.1: Why does high intrinsic dimension make learning harder?  
+Q6.2: How does low intrinsic dimension help generalization?  
+Q6.3: How do dimensionality reduction methods take advantage of this?
+
+Q7: What happens when m approaches d?
+
+Q7.1: What does it mean when intrinsic and ambient dimensions are nearly equal?  
+Q7.2: How does geometry behave when m ≈ d?  
+Q7.3: What happens to distances, volume, and density in this case?
+
+
+
+-----
+
+# Scaling Law and Geometric Meaning
+
+Neighbourhood growth:
+N(r) ∝ rᵐ
+
+Interpretation:
+The number of points within radius r grows roughly like r to the power m.
+This defines how distance and density scale with the intrinsic dimension m.
+
+Small m:
+– Distances reflect real similarity.
+– Neighbourhoods are well-structured.
+– Geometry-based methods remain stable.
+
+Large m:
+– Distances become less informative.
+– Most points are nearly equidistant.
+– Nearest-neighbour and geometric algorithms become unstable.
+
+Conclusion:
+The intrinsic dimension m governs how distance behaves
+and determines the effectiveness of geometry-based methods
+in high-dimensional data.
+
+
+----
+
+
+#manifold perspective
+#embedding vs intrinsic dimension
+#local intrinsic dimensionality
+#relation to doubling dimension
+#packing and covering numbers
+#curse of dimensionality
+#impact on nearest-neighbor complexity

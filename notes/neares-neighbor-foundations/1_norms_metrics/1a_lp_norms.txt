@@ -1,0 +1,185 @@
+Norms and Distances
+
+
+#Introduction
+The ℓₚ norm measures the length or magnitude of a vector in d-dimensional space, written as ℝᵈ.
+ℓₚ refers to a family of mathematical rules, each describing how to measure the length or magnitude of a vector.
+
+A norm is a function that assigns a single non-negative number to a vector.
+It tells you “how long” or “how big” the vector is.
+
+‖·‖ : ℝᵈ → ℝ₊
+Define a norm as a function from ℝᵈ to ℝ₊.
+It takes a vector x ∈ ℝᵈ and returns a nonnegative real number ‖x‖ ∈ ℝ₊,
+interpreted as the length or magnitude of x.
+
+‖·‖ the norm operator (function name)
+ℝᵈ the domain — the set of all d-dimensional real vectors x = (x₁, x₂, …, x_d).
+ℝ₊ the codomain — the set of all nonnegative real numbers (ℝ₊ = { r ∈ ℝ | r ≥ 0 }).
+· placeholder for any vector.
+
+So the norm maps each vector x ∈ ℝᵈ to a nonnegative real number ‖x‖ ∈ ℝ₊,
+interpreted as the “length” or “magnitude” of x.
+
+A valid norm must satisfy three fundamental properties
+for all vectors x, y ∈ ℝᵈ and all scalars α ∈ ℝ:
+
+‖x‖ = 0 ⇔ x = 0
+Identity property.
+Only the zero vector has zero length.
+
+‖αx‖ = |α|‖x‖
+Homogeneity property.
+Scaling a vector by α scales its length by |α|.
+
+‖x + y‖ ≤ ‖x‖ + ‖y‖
+Triangle inequality.
+The straight path is always the shortest one.
+
+
+#Formal Definition
+
+
+# Induced Distance (Metric)
+
+The ℓₚ norm defines a family of ways to measure the length of a vector
+by combining its coordinates according to the parameter p.
+
+|x|ₚ = ( Σ |xᵢ|ᵖ )^(1/p), for 1 ≤ p < ∞
+|x|∞ = maxᵢ |xᵢ|
+
+Define the ℓₚ norm of a vector x as the p-th root of the sum of the p-th powers of its absolute components.
+For p between 1 and infinity, we raise each coordinate’s magnitude |xᵢ| to the power p,
+sum over all coordinates i = 1 to d, and finally take the 1/p power of that sum.
+
+When p equals infinity, we take the limit case,the maximum absolute coordinate.
+So |x|∞ gives the largest magnitude among all components of x.
+
+
+Σ the summation symbol, add up all terms from i = 1 to d
+|xᵢ| the absolute value of the i-th component
+p a real number ≥ 1
+1/p the reciprocal exponent taking the p-th root of the sum
+maxᵢ for p = ∞, take the largest absolute component value
+
+
+#Manhattan or Taxicab Norm
+
+Case 𝑝 = 1 p=1 — The ℓ₁ Norm
+
+We now consider the specific case p = 1 in the general ℓₚ definition.
+
+‖x‖₁ = Σ |xᵢ| , for i = 1 to d
+
+Substituting 𝑝 = 1 p=1 into the ℓₚ formula removes the exponent and the root,
+leaving only the sum of the absolute component magnitudes.
+
+‖x‖ₚ = ( Σ |xᵢ|ᵖ )^(1/p) ⟶ (for p = 1) ‖x‖₁ = Σ |xᵢ|
+
+The ℓ₁ norm of x equals the sum of the absolute values of its coordinates.
+
+#Distance Between Two Points
+
+Using the ℓ₁ norm, we can define the distance between two points
+p = (p₁, p₂, …, p_d) and q = (q₁, q₂, …, q_d) in ℝᵈ as the sum of the absolute coordinate differences.
+
+D₁(p, q) = ‖p − q‖₁ = Σ |pᵢ − qᵢ| , for i = 1 to d
+
+The distance between the two points p and q is obtained
+by summing the absolute difference of each corresponding coordinate.
+Each term |pᵢ − qᵢ| represents the movement along one axis,
+and adding them together gives the total grid-based distance between the points.
+
+#Euclidean Norm
+
+Case p = 2 — The ℓ₂ Norm
+
+We now consider the specific case p = 2 in the general ℓₚ definition.
+
+‖x‖₂ = √( Σ |xᵢ|² ) , for i = 1 to d
+
+Substituting p = 2 into the ℓₚ formula gives the square root of the sum of squared components.
+
+‖x‖ₚ = ( Σ |xᵢ|ᵖ )^(1/p) ⟶ (for p = 2) ‖x‖₂ = √( Σ |xᵢ|² )
+
+The ℓ₂ norm corresponds to the familiar Euclidean length of a vector in space.
+It measures the straight-line distance from the origin to the point x.
+
+#Distance Between Two Points
+
+Using the ℓ₂ norm, the distance between two points
+p = (p₁, p₂, …, p_d) and q = (q₁, q₂, …, q_d) in ℝᵈ is defined as
+
+D₂(p, q) = ‖p − q‖₂ = √( Σ (pᵢ − qᵢ)² ) , for i = 1 to d
+
+the euclidean distance is the length of the straight line connection p and q.
+
+#Chebyshev Norm
+
+Case p = ∞ — The ℓ∞ Norm
+
+We now consider the limit case as p approaches infinity in the general ℓₚ definition.
+
+‖x‖∞ = limₚ→∞ ( Σ |xᵢ|ᵖ )^(1/p)
+
+In the limit, the norm depends only on that maximal component
+
+‖x‖∞ = maxᵢ |xᵢ|
+
+The ℓ∞ norm therefore measures the greatest absolute value among all coordinates of x.
+
+#Distance Between Two Points
+
+Using the ℓ∞ norm, the distance between two points
+p = (p₁, p₂, …, p_d) and q = (q₁, q₂, …, q_d) in ℝᵈ is defined as
+
+D∞(p, q) = ‖p − q‖∞ = maxᵢ |pᵢ − qᵢ|
+
+
+#Unit Balls
+
+The unit ball of a norm is the set of all vectors whose length equals one:
+
+Bₚ(1) = { x ∈ ℝ² : ‖x‖ₚ = 1 }
+
+The set of all vectors x in ℝ² whose ℓₚ norm equals one.
+
+It represents all points lying at unit distance from the origin under the chosen norm.
+
+#Case p = 1 — The ℓ₁ Unit Ball (Diamond Shape)
+
+‖x‖₁ = |x₁| + |x₂| = 1
+
+The sum of the absolute values of x₁ and x₂ equals one.
+The boundary forms a diamond touching the axes at (±1, 0) and (0, ±1)
+
+#Case p = 2 — ℓ₂ Unit Ball (Circle)
+
+‖x‖₂ = √(x₁² + x₂²) = 1
+The square root of the sum of the squares of x₁ and x₂ equals one.
+
+It represents all points that are exactly one unit away from the origin in Euclidean distance,
+forming a perfect circle.
+
+#Case p = ∞ — ℓ∞ Unit Ball (Square)
+
+‖x‖∞ = max(|x₁|, |x₂|) = 1
+The largest absolute coordinate of the vector equals one.
+
+It includes all points whose coordinates stay within the range [−1, 1].
+The boundary forms a square aligned with the coordinate axes.
+
+#norm equivalence - finit dimension
+
+All ℓₚ norms in finite-dimensional space ℝᵈ are equivalent.
+
+There exist constants 0 < c ≤ C < ∞, depending only on d, p, and q,
+such that for every vector x ∈ ℝᵈ:
+
+c · ‖x‖_q ≤ ‖x‖_p ≤ C · ‖x‖_q
+
+This means that all ℓₚ norms measure size in a comparable way.
+
+Geometrically, this means the shapes of the unit balls are different
+(diamond, circle, square in ℝ²), but each can fit inside a scaled version of the others.
+They describe the same space, only stretched or compressed by constant factors.
