@@ -1,6 +1,11 @@
+joblib
+numpy
 pandas
+python-dateutil
+pytz
 scikit-learn
-
-
-#numpy
-#matplotlib
+scipy
+six
+threadpoolctl
+tzdata
+matplotlib

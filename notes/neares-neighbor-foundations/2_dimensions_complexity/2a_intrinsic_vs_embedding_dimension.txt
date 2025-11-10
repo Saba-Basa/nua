@@ -65,9 +65,39 @@ Once we understand degrees of freedom, we can define the intrinsic dimension:
 it is the number of independent directions (degrees of freedom) 
 that describe the meaningful variation in the data.
 
+# Why Intrinsic Dimension Matters
 
-#TODO
-why intrinsic dimension matters, how it can vary locally, and what effect it has on NN
+If data lie on an m-dimensional manifold M ⊂ ℝᵈ,  
+then M is a smooth surface of dimension m inside the d-dimensional real space ℝᵈ.  
+Here d is the number of coordinates in the ambient space,  
+and m is the number of independent directions in which the data can vary (m ≤ d). 
+
+Q1: What does it mean that the data "lie on an m-dimensional manifold M ⊂ ℝᵈ"?
+"M is a subset of R superscript d"
+
+ℝᵈ = { (x₁, x₂, …, x_d) | each xᵢ is a real number }
+"the set of all points with d real coordinates"
+
+In your own words:
+How are the data points arranged inside the full d-dimensional space?
+Describe the shape/structure you imagine when you hear "the data lie on a manifold".
+
+
+
+
+
+the number of neighbors within radius r grows approximately as rᵐ.  
+This relation governs how distances and densities scale.
+
+When m is small, distances preserve meaningful similarity,  
+and nearby points remain close in structure.  
+When m is large, distances become less informative  
+because most points are almost equally far apart.  
+In such cases, nearest-neighbor relations and geometric algorithms become unstable.
+
+The intrinsic dimension therefore determines how distances behave  
+and how effectively geometry-based methods operate in high-dimensional data.
+
 
 #manifold perspective
 #embedding vs intrinsic dimension
