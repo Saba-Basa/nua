@@ -256,15 +256,36 @@ F1: Let M ⊂ ℝᵈ be a smooth manifold of dimension m.
 Then the intrinsic dimension of M is m; it is the number of independent coordinates needed to describe points on M.
 M is a subset of R to the power d.
 
-distances
-I2: Distance, spatial distance between two points
-F2:
-
-F3:
-I3:
+### Core objects
 
 
+## manifold M ⊂ ℝᵈ
+I1:
+When I think of a manifold, I imagine standing on a smooth surface. 
+It feels flat right under my feet, but I can move in more than one direction.
+There are a multitude of directions.
+Those small, flat regions connect smoothly everywhere, 
+so even if the whole shape is curved, locally it behaves like flat space.
+That’s what “vielfache” means to me: having many directions of freedom that fit together smoothly.
 
+F1:
+A smooth manifold of dimension m is a set M such that every point x ∈ M
+has a neighborhood U ⊂ M and a map φ : U → ℝᵐ that is a homeomorphism onto its image.
+The collection of such pairs (U, φ) is called an atlas.
+If all transition maps φ_j ∘ φ_i⁻¹ between overlapping charts are smooth,
+then M is a smooth (differentiable) manifold.
+
+## point on the manifold x ∈ M
+## local neighborhood U ⊂ M
+## coordinate map φ : U → ℝᵐ
+## atlas { (U_i, φ_i) }
+## ambient space ℝᵈ
+## intrinsic dimension m
+## ambient dimension d
+## distance function d(x, y)
+## neighborhood Nᵣ(x)
+
+--------------------
 
 
 Q4: How can intrinsic dimension vary locally?
