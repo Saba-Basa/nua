@@ -60,17 +60,61 @@ these four features form a 4D space.
 But height and weight are correlated, they vary together.
 So the data may effectively vary along only 3 independent directions: 3 degrees of freedom.
 
-#intrinsic dimension
-Once we understand degrees of freedom, we can define the intrinsic dimension:
-it is the number of independent directions (degrees of freedom) 
-that describe the meaningful variation in the data.
-
 # Why Intrinsic Dimension Matters
 
-If data lie on an m-dimensional manifold M ⊂ ℝᵈ,  
-then M is a smooth surface of dimension m inside the d-dimensional real space ℝᵈ.  
-Here d is the number of coordinates in the ambient space,  
-and m is the number of independent directions in which the data can vary (m ≤ d). 
+Setup.  
+Let the ambient space be V = ℝᵈ, equipped with a norm ‖·‖ and the induced metric  
+d(x, y) = ‖x − y‖.  
+Assume the data lie on (or near) a smooth **embedded** manifold M ⊂ ℝᵈ  
+of intrinsic dimension m ≤ d.
+
+### Definition (Smooth Embedded Manifold)
+
+A set M ⊂ ℝᵈ is a smooth embedded manifold of dimension m  
+if for every point x ∈ M there exists an open neighborhood  
+V ⊂ ℝᵈ and a smooth map  
+ψ : V → ℝ^{d−m}  
+such that
+
+- ψ(x) = 0,  
+- the derivative Dψ(x) has full rank d − m, and  
+- M ∩ V = { y ∈ V | ψ(y) = 0 }.
+
+Then M is locally a smooth m-dimensional surface inside ℝᵈ,  
+and **inherits** the Euclidean metric from the ambient space:
+
+d_M(x, y) = ‖x − y‖  for all x, y ∈ M.
+
+### Local Coordinates
+
+Locally, M behaves like ℝᵐ.  
+For each point x ∈ M, there exists an open set U ⊂ M  
+and a smooth coordinate map (a **chart**)  
+φ : U → ℝᵐ  
+that is a homeomorphism onto its image.  
+A collection of such charts that cover M and have smooth overlaps  
+is called an **atlas**.  
+
+Intuitively, each chart provides a “flat” coordinate system  
+for a small region of M, even if M is curved globally.
+
+### Geometric Interpretation
+
+- The ambient dimension **d** is the number of coordinates of the surrounding space.  
+- The intrinsic dimension **m** is the number of independent directions in which the data vary on M.  
+- Each neighborhood U ⊂ M looks like flat space ℝᵐ,  
+  even though M itself may curve within ℝᵈ.
+
+Example:  
+A 2D sphere surface inside ℝ³ is a smooth manifold with m = 2, d = 3.  
+Locally, it looks like a plane, but globally it wraps into a sphere.
+
+### Summary
+
+M is not a flat plane but a smooth m-dimensional surface embedded in ℝᵈ.  
+It inherits its metric from the ambient space,  
+so distances and neighborhoods on M are computed  
+using the same Euclidean norm of ℝᵈ, restricted to points on M.
 
 ---
 
