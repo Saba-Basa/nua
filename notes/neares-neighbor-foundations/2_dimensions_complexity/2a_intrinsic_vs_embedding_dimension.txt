@@ -302,7 +302,6 @@ M is a subset of R to the power d.
 
 ### Core objects
 
-
 ## manifold M ⊂ ℝᵈ
 I1:
 When I think of a manifold, I imagine standing on a smooth surface. 
