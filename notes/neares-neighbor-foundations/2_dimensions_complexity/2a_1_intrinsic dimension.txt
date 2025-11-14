@@ -81,7 +81,13 @@ If all transition maps φ_j ∘ φ_i⁻¹ between overlapping charts are smooth,
 then M is a smooth (differentiable) manifold.
 
 ## point on the manifold x ∈ M
-I1:
+I1: A point on a manifold is a single position on the shape. 
+It has no size, no area, no volume; it is purely a location. 
+Even if the manifold is embedded in a higher-dimensional ambient space, 
+each point still lies on the manifold, not elsewhere in the ambient space. 
+The ambient space provides a full coordinate system in which the manifold lives, 
+but the manifold itself restricts which locations are allowed. 
+A point is simply one such allowed location on the shape.
 F1:
 
 ## local neighborhood U ⊂ M
