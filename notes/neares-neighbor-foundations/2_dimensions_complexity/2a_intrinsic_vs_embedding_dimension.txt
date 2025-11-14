@@ -302,15 +302,17 @@ M is a subset of R to the power d.
 
 ### Core objects
 
-
 ## manifold M ⊂ ℝᵈ
 I1:
-When I think of a manifold, I imagine standing on a smooth surface. 
-It feels flat right under my feet, but I can move in more than one direction.
-There are a multitude of directions.
-Those small, flat regions connect smoothly everywhere, 
-so even if the whole shape is curved, locally it behaves like flat space.
-That’s what “vielfache” means to me: having many directions of freedom that fit together smoothly.
+Any shape, for example a torus, sits in ℝ³. Every point on the torus surface needs two numbers to locate it:
+one angle around the ring, one angle around the tube. That's why it's a 2D manifold. 
+Even though the torus lives in 3D space, 
+you only move in two independent directions when you stay on the surface.
+Same with a sheet of paper. 
+You need two distances to find any spot on the sheet. 
+If you bend the paper through space, 
+the points still only need two coordinates to describe their position on the sheet itself.
+Locally, both surfaces are flat. Globally, they can be curved or bent through the larger space.
 
 F1:
 A smooth manifold of dimension m is a set M such that every point x ∈ M
