@@ -1,0 +1,144 @@
+#Framework
+Step 1: Clarify
+Break the question into its main components.
+Identify the core concepts (nouns) and their relationships (verbs).
+Define what each concept represents in the given context.
+
+Step 2: Define
+Write both the formal and intuitive meanings of all core terms.
+Ensure every word you use has a precise and consistent meaning.
+
+Step 3: Mechanism
+Explain how one quantity or concept influences another.
+Trace the logical or causal connection step by step.
+
+Step 4: Example
+Test the idea using the simplest possible examples.
+Use low-dimensional or concrete cases to check your reasoning.
+
+Step 5: Pattern
+Extract the general rule or invariant that holds across cases.
+Express it symbolically or as a concise statement.
+
+Step 6: Reflect
+Restate the insight in clear, plain language.
+If you can explain it simply and correctly, you understand it deeply.
+
+
+Q3: How does intrinsic dimension affect distances and neighborhoods?
+
+# Core objects
+What are the main things the question is about?
+intrinsic dimension
+distances
+neighborhoods
+
+# Relationship type
+affect -> causation/influence
+
+# Interpretation
+A: How does intrinsic dimension (m) influence distances?
+B: How does intrinsic dimension (m) influence neighborhood structure?
+
+---------------------------------------------
+# Step 2: Define
+Write both the formal and intuitive meanings of all core terms.
+---------------------------------------------
+
+intrinsic dimension
+I1:
+part and parcel of the system. It tells how many independent directions belong to the system itself.
+one for a line, two for a plane, three for a volume.
+
+F1:
+Let M ⊂ ℝᵈ be a smooth manifold of dimension m.
+Then the intrinsic dimension of M is m; it is the number of independent coordinates
+needed to describe points on M. M is a subset of ℝᵈ.
+
+---------------------------------------------
+### Core objects
+---------------------------------------------
+
+## manifold M ⊂ ℝᵈ
+I1:
+Any shape, for example a torus, sits in ℝ³. Every point on the torus surface needs
+two numbers to locate it: one angle around the ring, one angle around the tube.
+That's why it's a 2D manifold. Even though the torus lives in 3D space, you only
+move in two independent directions when you stay on the surface.
+
+Same with a sheet of paper. You need two distances to find any spot on the sheet.
+If you bend the paper through space, the points still only need two coordinates
+to describe their position on the sheet itself.
+
+Locally, both surfaces are flat. Globally, they can be curved or bent through the
+larger space.
+
+F1:
+A smooth manifold of dimension m is a set M such that every point x ∈ M
+has a neighborhood U ⊂ M and a map φ : U → ℝᵐ that is a homeomorphism onto its image.
+The collection of such pairs (U, φ) is called an atlas.
+If all transition maps φ_j ∘ φ_i⁻¹ between overlapping charts are smooth,
+then M is a smooth (differentiable) manifold.
+
+## point on the manifold x ∈ M
+I1:
+F1:
+
+## local neighborhood U ⊂ M
+I1:
+F1:
+
+## coordinate map φ : U → ℝᵐ
+I1:
+F1:
+
+## atlas { (U_i, φ_i) }
+I1:
+F1:
+
+## φ_j ∘ φ_i⁻¹, transition maps
+I1:
+F1:
+
+## ambient space ℝᵈ
+I1:
+F1:
+
+## intrinsic dimension m
+(I1 already above)
+(F1 already above)
+
+## ambient dimension d
+I1:
+F1:
+
+## distance function d(x, y)
+I1:
+F1:
+
+## neighborhood Nᵣ(x)
+I1:
+F1:
+
+
+
+---------------------------------------------
+# Step 3: Mechanism
+---------------------------------------------
+(Explain how intrinsic dimension influences distance + neighborhoods)
+
+
+---------------------------------------------
+# Step 4: Example
+---------------------------------------------
+
+
+---------------------------------------------
+# Step 5: Pattern
+---------------------------------------------
+
+
+---------------------------------------------
+# Step 6: Reflect
+---------------------------------------------
+
