@@ -368,6 +368,8 @@ what happens to all topological notionsdefined in terms of
 open sets (continuity, neighborhoods, convergence)?
 
 
+## Conceptual Layering: Why do we start with X, and what role does T play?
+
 1. Why do we start with an arbitrary set 𝑋 with no structure, 
 instead of starting with something specific like 𝑅?
 The set X, give no structure, nothing. The Topology T adds an open set on top of X.
