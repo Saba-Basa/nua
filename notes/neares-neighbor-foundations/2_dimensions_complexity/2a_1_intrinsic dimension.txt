@@ -339,11 +339,49 @@ So:
   X is a subset of X, and X ∈ T.
   ∅ is a subset of X, and ∅ ∈ T.
 
-
-
 Q8: Why is ∅ considered a subset of every set X?
+Why is the statement ∅ ⊆ X true for all X?
+
+If:
+A ⊆ X ⇔ ∀x (x ∈ A → x ∈ X)
+
+l:A is a subset of X
+r: for every element x(if x is in A, then x is in X)
+(x ∈ A → x ∈ X)
+For every possible x, if x happens to be inside A, then it must also be inside X.
+example:
+Let A = {a, c}
+Let X = {a, b, c}
+
+Replace A ⊆ X by ∅ ⊆ X.
+
+The empty set is a subset of every set because it contains nothing
+that could violate the rule "if it's in A, then it must be in X".
+
+So:
+
+"∅ contains nothing"
+"∅ contains nothing that is not in X"
+
+¬∃x (x ∈ ∅ ∧ x ∉ X)
+
+"∅ contains nothing that X does not contain."
+
+∀x (x ∈ ∅ → x ∈ X)  ⇔  ¬∃x (x ∈ ∅ ∧ x ∉ X)
 
 Q9: If T did NOT contain ∅, what part of the topology axioms would fail?
+(i)  X and ∅ are open.
+     → If T does not contain ∅, axiom (i) fails immediately.
+
+(ii) The union of any family of open sets is open.
+     → The union of the empty family is ∅, so axiom (ii) cannot be satisfied
+       unless ∅ is in T.
+
+(iii) The intersection of any finite family of open sets is open.
+     → This axiom is not the one that forces ∅.
+
+If T did NOT contain ∅, axiom (i) fails directly,
+and axiom (ii) would also be violated because the empty union must be ∅.
 
 #axiom 2: X is open
 Q10: The definition says that X must be in T. What does it mean for a set
