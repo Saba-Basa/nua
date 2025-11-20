@@ -711,3 +711,38 @@ F1:
 # Step 6: Reflect
 ---------------------------------------------
 
+# Mapper & TDA: Code–Theory Bridge
+
+- Data: X is your set of points (cloud, torus, etc.); each point has coordinates (can be high-dimensional).
+- Open sets: Selected via geometric rules (e.g., rectangles, quantile bands, filter intervals on z-height).
+- T: The collection of these open subsets—your custom "topology" for X, shaped by code logic.
+
+- Mechanism:
+    * Each region (rectangle, interval) defines a local group (“open set”).
+    * Overlapping regions mean some points belong to multiple groups—this overlap encodes relationships.
+    * Small open sets = local detail; large = global context. Tradeoff handled by cover size/overlap in script.
+
+- Example: plot_adaptive_yellow or plot_bands() shows regions and points “open” for each.
+           Torus code: covers X with z-intervals; overlapping pulls back in 3D.
+
+- Pattern:
+    * By building many overlapping open sets and tracking their intersections, you induce a network (nodes = groups, edges = shared points).
+    * This network simplifies and summarizes the “shape” of X—clusters, loops, bridges are now visible patterns.
+    * Adjusting the filter/cover in code changes the granularity and what structures are detectable.
+
+- Reflection:
+    * In practice, this approach lets you reveal the hidden geometry and connections in arbitrary point clouds.
+    * The code visually and mathematically turns local neighborhoods into global insights.
+
+# TODO Questions
+
+- How do I choose the right size and number of regions (covers/open sets) for my dataset?
+- How does my choice of region size and overlap affect the patterns and connectivity I see in the Mapper or TDA output?
+- When I see clusters, loops, or bridges in the resulting graph, what do these structures tell me about the original data X?
+- What is the best way to balance local detail and global structure in overlapping regions?
+- How can I interpret points that are in the overlap of multiple regions—do they represent bridges, outliers, or important transitions?
+- How would changing the filtering function (e.g., using a different coordinate or nonlinear function) change what I see in the Mapper graph?
+- If an open set contains only a single point (or almost all points), what information is lost or gained?
+- How do I ensure my collection T is closed under unions and intersections in my code, and does this matter for interpretation?
+- Is there an optimal way to select covers for data with unknown or complicated geometry?
+- What are meaningful ways to visualize or summarize the resulting Mapper or nerve graph?
