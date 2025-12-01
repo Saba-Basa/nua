@@ -209,7 +209,7 @@ Why the object exists
 what job it performs inside the theory
 what operations require this object
 
-
+===========================================================================================
 ===========================================================================================
 #: Topological Foundations
 1. Topological Space  
@@ -227,6 +227,7 @@ objects:
     - X is a set (the raw container of points)
     - T is a Collection of subsets of X
     - elements of T are open subsets (U ⊆ X where U ∈ T)
+===========================================================================================
 ===========================================================================================
 
 ###goal Definition - component - clause - axiom - consequence
@@ -623,13 +624,39 @@ T = {∅, {1}, {2}, {1,2}, {1,2,3}}
 So:
 “This T is not a topology because X is missing, and X must be an open set by definition.”
 
-FQ: Why must every element of T already be a subset of X?
-Because T ⊆ P(X) means every element of T must be one of the subsets of X.
-
-FQ: What goes wrong if T contains something that is not a subset of X?
-Then T is no longer a subset of P(X), so (X, T) is not even a topological space by definition.
-
 Q22: How do these axioms force T to be stable under basic set operations?
+
+In this context, basic set operations means union and finite intersection.
+Those are defined by the axioms.
+FQ: How does each axiom forces closure under these operations.
+Closure means: if you apply an operation to elements of T, 
+the result must also be in T.
+FQ: Which axiom forces closure under unions, and how does it say this?
+Axiom (ii) forces closure under unions because it says 
+that the union of any family of open subsets is open, and open means in T
+FQ: Which axiom forces finite intersections, nad how does it say this?
+Axiom (iii) forces closure under finite intersections because it says 
+that the intersection of any finite collection of open subsets is open, 
+and open means in T.
+
+Axiom (ii) and axiom (iii) say that whenever you take a union or a finite
+intersection of sets that are already in T, the result must also be in T.
+That is why T is stable under these operations.
+
+Example:
+Let X = {1,2,3}
+Let T = {∅, {1}, {1,2,3}}
+
+Since {1} and {1,2,3} are in T:
+
+Union:
+{1} ∪ {1,2,3} = {1,2,3}   (in T)
+
+Intersection:
+{1} ∩ {1,2,3} = {1}       (in T)
+
+Both results stay inside T, so T is stable under these operations.
+The result is always in T, so the axiom never fails.
 
 ## Why does openness depend entirely on the chosen topology T, 
 and how can the same subset be open in one topology and not in another?
