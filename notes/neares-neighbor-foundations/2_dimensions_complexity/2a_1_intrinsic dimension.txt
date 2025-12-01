@@ -209,6 +209,8 @@ Why the object exists
 what job it performs inside the theory
 what operations require this object
 
+
+===========================================================================================
 #: Topological Foundations
 1. Topological Space  
 Definition: Topological Space
@@ -225,6 +227,7 @@ objects:
     - X is a set (the raw container of points)
     - T is a Collection of subsets of X
     - elements of T are open subsets (U ⊆ X where U ∈ T)
+===========================================================================================
 
 ###goal Definition - component - clause - axiom - consequence
 
@@ -538,6 +541,93 @@ finite intersections. That means axiom (iii) fails, and (X, T) is not a topology
 # Constraint on T
 Q21: Given all four axioms, 
 what kinds of collections of subsets of X are ruled out from being valid topologies?
+A:
+Collections are ruled out when the axioms are not fulfilled.
+FQ: 
+Can you give one explicit example of a collection 𝑇 ⊆ 𝑃 (𝑋) that fails
+because it does not contain 𝑋,
+and explain in one sentence why this alone disqualifies it as a topology?
+
+T ⊆ P(X):
+every element of T must already be a subset of X.
+topology axioms:
+axiom (i):
+a topology must contain ∅ and X.
+If X ∉ T, then axiom (i) is violated directly.
+
+Example:
+X = {1,2,3}
+T₀ = {∅, {1}, {2}}.
+
+axiom (i) is violated:
+X ∉ T₀
+
+Fix 1: add X
+T₁ = {∅, {1}, {2}, {1,2,3}}.
+
+Check axioms:
+
+1. ∅ ∈ T₁ — OK
+2. X ∈ T₁ — OK
+3. Closure under unions:
+   {1} ∪ {2} = {1,2} ∉ T₁  → fails axiom (ii)
+
+Fix 2: add missing union
+T₂ = {∅, {1}, {2}, {1,2}, {1,2,3}}.
+
+All unions of sets in T₂ lie in T₂ → axiom (ii) satisfied.
+
+4. Closure under finite intersections (in T₂):
+
+Sets in T₂:
+∅ , {1}, {2}, {1,2}, {1,2,3}
+
+Intersections:
+
+∅ ∩ ∅ = ∅
+∅ ∩ {1} = ∅
+∅ ∩ {2} = ∅
+∅ ∩ {1,2} = ∅
+∅ ∩ {1,2,3} = ∅
+
+{1} ∩ ∅ = ∅
+{1} ∩ {1} = {1}
+{1} ∩ {2} = ∅
+{1} ∩ {1,2} = {1}
+{1} ∩ {1,2,3} = {1}
+
+{2} ∩ ∅ = ∅
+{2} ∩ {1} = ∅
+{2} ∩ {2} = {2}
+{2} ∩ {1,2} = {2}
+{2} ∩ {1,2,3} = {2}
+
+{1,2} ∩ ∅ = ∅
+{1,2} ∩ {1} = {1}
+{1,2} ∩ {2} = {2}
+{1,2} ∩ {1,2} = {1,2}
+{1,2} ∩ {1,2,3} = {1,2}
+
+{1,2,3} ∩ ∅ = ∅
+{1,2,3} ∩ {1} = {1}
+{1,2,3} ∩ {2} = {2}
+{1,2,3} ∩ {1,2} = {1,2}
+{1,2,3} ∩ {1,2,3} = {1,2,3}
+
+All intersections lie in T₂ → axiom (iii) satisfied.
+
+Final topology:
+X = {1,2,3}
+T = {∅, {1}, {2}, {1,2}, {1,2,3}}
+
+So:
+“This T is not a topology because X is missing, and X must be an open set by definition.”
+
+FQ: Why must every element of T already be a subset of X?
+Because T ⊆ P(X) means every element of T must be one of the subsets of X.
+
+FQ: What goes wrong if T contains something that is not a subset of X?
+Then T is no longer a subset of P(X), so (X, T) is not even a topological space by definition.
 
 Q22: How do these axioms force T to be stable under basic set operations?
 
