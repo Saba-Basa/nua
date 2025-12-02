@@ -229,6 +229,7 @@ objects:
     - elements of T are open subsets (U ⊆ X where U ∈ T)
 ===========================================================================================
 ===========================================================================================
+James R. Munkres, Topology, 2nd ed., Prentice Hall, 2000, Section 12, p. 60.
 
 ###goal Definition - component - clause - axiom - consequence
 
@@ -663,22 +664,72 @@ and how can the same subset be open in one topology and not in another?
 
 Q23: In our definition, how is openness defined? 
 Does it depend onthe subset U itself, or on whether U is included in T?
+T is a collection of subsets of X, called open subsets. Elements of T are open subsets.
+U is open ⇔ U ∈ T
+Example:
+Let X = {1,2,3}
+U = {1}
+
+T₁ = {∅, {1}, {1,2,3}}
+T₂ = {∅, {2}, {1,2,3}}
+
+In T₁, U is open because U ∈ T₁.
+In T₂, U is not open because U ∉ T₂.
+
+The subset U is the same in both cases, so openness depends only on T.
 
 Q24: If we take the same set X but choose two different collections T₁ and T₂,
 do we get the same open sets or different ones?
 
+If T₁ and T₂ are different, then the open sets are different, because a set is open exactly when it is in the chosen T.
+Let X = {1,2,3}
+
+T₁ = {∅, {1}, {1,2,3}}
+T₂ = {∅, {2}, {1,2,3}}
+
+U = {1}
+
+In T₁:  {1} ∈ T₁  → {1} is open
+In T₂:  {1} ∉ T₂  → {1} is not open
+
+Same U, same X, different open sets because T₁ ≠ T₂.
+
 Q25: Can a subset U be in T₁ but not in T₂? 
 What would that imply about U’s status as an “open set”?
+Yes. If U ∈ T₁ but U ∉ T₂, then U is open in T₁ and not open in T₂, 
+because openness depends only on membership in T.
+Example:
+U = {1}
+T₁ = {∅, {1}, {1,2,3}}
+T₂ = {∅, {2}, {1,2,3}}
+
+U is open in T₁, not open in T₂.
 
 Q26: Does a subset have an intrinsic quality that makes it open, 
 or is openness assigned by placing it into T?
+No, it is assigned entirely by whether the subset is placed into T.
 
 Q27: What does this tell us about openness: is it an inherent geometric property,
 or is it relative to the chosen topology?
+It is completely relative to the chosen topology. 
+Because open means nothing more than being an element of T
 
 Q28: If openness depends on T, 
-what happens to all topological notionsdefined in terms of 
+what happens to all topological notions defined in terms of 
 open sets (continuity, neighborhoods, convergence)?
+
+===========================================================================================
+===========================================================================================
+
+Theorem 17.5.  Let A be a subset of the topological space X.
+(a) Then x ∈ Ā if and only if every open set U containing x intersects A.
+(b) Supposing the topology of X is given by a basis, then x ∈ Ā if and only if
+    every basis element B containing x intersects A.
+
+===========================================================================================
+===========================================================================================
+James R. Munkres, *Topology*, 2nd ed., Section 17 “Closed Sets and Limit Points”, p. 96.
+
 
 
 ## Conceptual Layering: Why do we start with X, and what role does T play?
