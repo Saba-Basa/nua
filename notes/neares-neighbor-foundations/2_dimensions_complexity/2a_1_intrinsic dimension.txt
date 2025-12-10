@@ -730,6 +730,64 @@ Theorem 17.5.  Let A be a subset of the topological space X.
 ===========================================================================================
 James R. Munkres, *Topology*, 2nd ed., Section 17 “Closed Sets and Limit Points”, p. 96.
 
+A neighborhood of x is any set U such that U ∈ T and x ∈ U.
+U is open  ⇔  U ∈ T
+U contains x  ⇔  x ∈ U
+
+U is a neighborhood of x  ⇔  (U ∈ T  AND  x ∈ U).
+If we change T, we change which sets are open.
+If we change which sets are open, we change which sets count as neighborhoods.
+So: When T changes, the neighborhoods of x change, because a neighborhood
+is an open set containing x, and openness means membership in T.
+
+A neighborhood of x is a region around x that the topology declares open.
+
+Example:
+Let X = {1,2,3}.
+
+Topology T₁ = {∅, X, {1}}
+Neighborhoods of 1 under T₁:
+{1},  X
+
+Topology T₂ = {∅, X}
+Neighborhoods of 1 under T₂:
+X
+
+Since {1} ∈ T₁ but {1} ∉ T₂, the neighborhoods of 1 change when T changes.
+
+FQ: Explain the precise difference between:
+A point x ∈ X is a single element of X.
+Example:
+X = {1,2,3}
+Then 1 ∈ X; 1 is a point.
+
+A subset U ⊆ X is a set whose members are points of X.
+Example:
+U = {1,2}
+Then 1 ∈ U and 2 ∈ U, so U ⊆ X.
+
+Difference:
+x ∈ X expresses membership (x is one element).
+U ⊆ X expresses inclusion (U consists of elements of X).
+A point has no elements inside it; a subset contains elements.
+
+Q1: For U ⊆ X, is U just a subset or is it also open? Explain how you decide.
+
+Q2: For a given U, determine whether U ∈ T₁ and whether U ∈ T₂.
+Why do these answers differ?
+
+Q3: For each candidate subset U, check whether x ∈ U.
+Why must this be tested separately from openness?
+
+Q4: List all subsets U that satisfy (U ∈ T₁ and x ∈ U).
+These are the neighborhoods of x under T₁.
+
+Q5: List all subsets U that satisfy (U ∈ T₂ and x ∈ U).
+These are the neighborhoods of x under T₂.
+
+Q6: Identify what changes when {1} is removed from T.
+Which neighborhood disappears and why?
+
 
 
 ## Conceptual Layering: Why do we start with X, and what role does T play?
