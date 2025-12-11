@@ -772,6 +772,21 @@ U ⊆ X expresses inclusion (U consists of elements of X).
 A point has no elements inside it; a subset contains elements.
 
 Q1: For U ⊆ X, is U just a subset or is it also open? Explain how you decide.
+⊆ means, is contained in.
+FQ: U ⊆ X sais, that U is a subset of X
+X = {1,2,3}
+U = {3,2}       → valid subset (3 ∈ X, 2 ∈ X)
+U = {4,2}       → NOT a valid subset (4 ∉ X)
+
+FQ: Does U appear as an element of T?
+To decide whether U is open, I check whether U ∈ T.
+If U ∉ T, then U is not open, even if it is a subset.
+Being a subset does not make U open; openness is determined only by membership in T.
+FQ: Explain which relation checks subsethood and which relation checks openness.
+The membership relation “∈” checks openness only when the set on the right is T:  
+U ∈ T means U is open.  
+U ∉ T means U is not open, even if U ⊆ X.
+A subset is open only when it is an element of T. Not when it is an element of any set.
 
 Q2: For a given U, determine whether U ∈ T₁ and whether U ∈ T₂.
 Why do these answers differ?
