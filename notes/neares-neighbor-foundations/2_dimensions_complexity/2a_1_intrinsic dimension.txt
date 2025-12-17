@@ -790,6 +790,13 @@ A subset is open only when it is an element of T. Not when it is an element of a
 
 Q2: For a given U, determine whether U ∈ T₁ and whether U ∈ T₂.
 Why do these answers differ?
+T₂ = {∅, X}
+T₁ = {∅, X, {1}}
+
+1.Identify the structure.
+2.Identify the definition.
+3.Apply the definition literally.
+4.Compare outcomes across structures.
 
 Q3: For each candidate subset U, check whether x ∈ U.
 Why must this be tested separately from openness?

@@ -1,0 +1,43 @@
+build data cleaning 
+
+READ → IMPLEMENT LOOP (ONLY WHAT YOU NEED)
+
+[Kuhn & Johnson – Applied Predictive Modeling]
+
+1) Ch. 1.2  Key Ingredients of Predictive Models
+   identify predictors vs target (schema)
+
+2) Ch. 1.6  Notation
+   name X (features), y (target) explicitly in code
+
+3) Ch. 2    A Short Tour of the Predictive Modeling Process
+   place cleaning BEFORE modeling (create cleaning/ module)
+
+4) Ch. 3.1  Data Transformations for Individual Predictors
+   per-column transformations (e.g. zero → NaN rules)
+
+5) Ch. 3.2  Data Transformations for Multiple Predictors
+   scaling strategy for all numeric features
+
+6) Ch. 3.4  Dealing with Missing Values
+   imputation rule (median) + missing-value handling
+
+(optional) 3.5 Removing Predictors
+   drop columns if mostly missing (optional)
+
+[scikit-learn User Guide]
+
+7) 7.3     Preprocessing data (overview)
+   use sklearn transformers, not ad-hoc code
+
+8) 7.3.1  Standardization (StandardScaler)
+   StandardScaler in pipeline
+
+9) 7.3.1.3 Scaling data with outliers (concept only)
+   justify median + (optional) RobustScaler
+
+10) 7.3.6 Imputation of missing values (SimpleImputer)
+    SimpleImputer(strategy="median")
+
+11) 7.1   Pipelines and composite estimators
+    sklearn Pipeline (cleaning is reproducible)
