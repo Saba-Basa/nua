@@ -1,0 +1,27 @@
+
+[Data responsibility]
+
+Decide which variables are relevant predictors and which variable is the target, 
+excluding irrelevant or confounding information.
+
+In predictive modeling, expert knowledge is needed to choose relevant data, 
+because irrelevant or confounding information can weaken the predictive signal and harm model performance.
+(Kuhn & Johnson, Applied Predictive Modeling, 2013, Ch. 1.2)
+
+[Notation]
+- X : all predictors (features), shape (n, P)
+    X  (NumPy array / pandas DataFrame)
+
+- y : target / response, length n
+    y  (1D array / Series)
+
+- x_ij : value of feature j for sample i
+    X[i, j] or X.iloc[i, j]
+
+- x_i : feature vector for sample i (row i of X)
+    code: X[i, :] or X.iloc[i, :]
+
+- n : number of samples (rows)
+- P : number of features (columns)
+
+(Kuhn & Johnson – Applied Predictive Modeling, Ch. 1.6 “Notation”)
