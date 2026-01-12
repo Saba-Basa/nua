@@ -35,6 +35,29 @@ Pipeline (fixed order, no deviations):
 
 1. Data Understanding
    - What is the prediction objective?
+   Definition:
+    "The predictors, independent variables, attributes, 
+    or descriptors are the data used as input for the prediction equation."
+    (Kuhn & Johnson, Applied Predictive Modeling, 2013, Ch. 1.3)
+    - the input data
+    Function:
+    - represent the input data
+    Condition:
+    It applies when a predictive model is constructed or used to generate predictions
+    for example:
+    when computing ^y(target) from X (all predictors: features).
+    Design reason:
+    Why is this concept structured this way?
+    - to separate inputs from the quantity being predicted
+    - so the model can learn a mapping X->y
+    (fitting a function from inputs to 
+    outputs under an error criterion)
+    Boundary:
+    they're seperate to what?.
+    Predictors must not include or encode the target.
+    the target is the output.
+
+
    - What is X (predictors)?
    - What is y (target)?
    - What relationships or patterns are visible?
