@@ -25,3 +25,43 @@ because irrelevant or confounding information can weaken the predictive signal a
 - P : number of features (columns)
 
 (Kuhn & Johnson – Applied Predictive Modeling, Ch. 1.6 “Notation”)
+
+[PREDICTIVE MODELING PROCESS]
+
+Major Question:
+How do we correctly transform raw data into a model that generalizes?
+
+Pipeline (fixed order, no deviations):
+
+1. Data Understanding
+   - What is the prediction objective?
+   - What is X (predictors)?
+   - What is y (target)?
+   - What relationships or patterns are visible?
+   - What problems are visible (nonlinearity, extremes, gaps)?
+
+2. Preprocessing
+   - What must be cleaned or transformed before modeling?
+   - What preprocessing is suggested by data characteristics?
+   - What must be done BEFORE any model is built?
+
+3. Data Splitting
+   - What data is used for training?
+   - What data is used for evaluation?
+   - Why is this split appropriate for the prediction goal?
+   - What must NOT be reused during training?
+
+4. Model Building
+   - What candidate model forms are considered?
+   - What assumptions do they encode?
+   - What parameters are estimated from training data?
+
+5. Model Evaluation
+   - What metric evaluates performance?
+   - How is overfitting avoided?
+   - What resampling strategy is used?
+
+6. Model Selection
+   - Which models are compared?
+   - On what evidence is one chosen?
+   - What risks remain after selection?
