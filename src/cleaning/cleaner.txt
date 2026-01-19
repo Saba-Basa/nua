@@ -10,6 +10,37 @@ READ → IMPLEMENT LOOP (ONLY WHAT YOU NEED)
 2) Ch. 1.6  Notation
    name X (features), y (target) explicitly in code
 
+→ PRACTICE
+   load real dataset
+   define X and y concretely
+   inspect columns and types
+   
+Level 1
+• Iris dataset — https://www.kaggle.com/datasets/vikrishnan/iris-dataset [web:1]
+• Titanic dataset — https://www.kaggle.com/datasets/yasserh/titanic-dataset [web:15]
+• sklearn Digits — built-in via sklearn.datasets.load_digits()
+
+Level 2
+• Wine Quality (Red) — https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009 [web:10]
+• Breast Cancer Wisconsin — https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data [web:16]
+• Fashion-MNIST — https://www.kaggle.com/datasets/zalando-research/fashionmnist [web:27]
+
+Level 3
+• MNIST Digit Recognizer — https://www.kaggle.com/competitions/digit-recognizer [web:31]
+• House Prices Regression — https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques [web:45]
+• Credit Card Fraud Detection — https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud [web:25]
+
+Level 4
+• EMNIST (Digits + Letters) — https://www.kaggle.com/datasets/crawford/emnist
+• CIFAR-10 — https://www.cs.toronto.edu/~kriz/cifar.html [web:7]
+• Adult Census Income — https://www.kaggle.com/datasets/uciml/adult-census-income [web:40]
+
+Level 5
+• Tiny ImageNet — https://www.kaggle.com/c/tiny-imagenet (or search "Tiny ImageNet Kaggle")
+• Large competitions — https://www.kaggle.com/datasets
+• Time Series Forecasting — https://www.kaggle.com/search?q=time+series+forecasting
+
+
 3) Ch. 2    A Short Tour of the Predictive Modeling Process
    place cleaning BEFORE modeling (create cleaning/ module)
 

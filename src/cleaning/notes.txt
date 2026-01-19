@@ -31,7 +31,7 @@ because irrelevant or confounding information can weaken the predictive signal a
 Major Question:
 How do we correctly transform raw data into a model that generalizes?
 
-Pipeline (fixed order, no deviations):
+Pipeline:
 
 1. Data Understanding
    - What is the prediction objective?
@@ -92,13 +92,60 @@ Pipeline (fixed order, no deviations):
 
       ======
    Boundary: What would contaminate or invalidate X as pure input data?
-      -X must not include or encode the target, or any information derived from it.
+      - X must not include or encode the target, or any information derived from it.
       Boundaries protect role purity-> the role of X is to provides the input data
 
    - What is y (target)?
-   
-   - What relationships or patterns are visible?
-   - What problems are visible (nonlinearity, extremes, gaps)?
+   Definition:     What is this thing?
+      - Is a vector of all n outcome values
+      - y is the real observed outcome value in the dataset.
+   Function:       What does it do?
+      - Provides the ground truth values the model learns to predict.
+   Condition:      When does it apply or occur?
+ 
+      During training:
+      - Model predicts ŷ
+      - ŷ is compared to y
+      - Error is computed
+      - Model parameters are updated
+
+      y is needed to teach the model.
+
+      During evaluation:
+      - Model predicts ŷ
+      - ŷ is compared to y
+      - Performance metric is computed
+
+      y is needed to judge model quality.
+
+   Design reason:  Why is it designed this way?
+   - Y is designed to represent real, 
+   measured outcomes, 
+   enabling predictions to be compared with the actual results 
+   and allowing model error to be computed in supervised learning.
+
+   Boundary:       What must it not do or include?
+   -> Boundary is about role puraty
+      - y must not
+         contain predictions (ŷ).
+         include input features (X).
+         be modified by the model.
+
+      ======
+
+      Prediction vs Target
+
+      y   = true observed outcome (ground truth)
+      ŷ   = model prediction
+
+      Learning minimizes the difference between y and ŷ.
+
+      Example (car fuel economy):
+      X = engine displacement, weight, cylinders
+      y = measured fuel efficiency in km/L
+      ŷ = predicted fuel efficiency in km/L
+
+      ======
 
 2. Preprocessing
    - What must be cleaned or transformed before modeling?
