@@ -14,9 +14,23 @@ READ → IMPLEMENT LOOP (ONLY WHAT YOU NEED)
    load real dataset
    define X and y concretely
    inspect columns and types
-   
+
+DATA INGESTION TODO
+===================
+
+1. Load dataset file into memory
+2. Choose target column (y)
+3. Remove target from table
+4. Remove ID / index columns
+5. Assign remaining columns to X
+6. Verify:
+   - X rows == y rows
+   - X columns = predictors only
+   - Data types correct
+
+
 Level 1
-• Iris dataset — https://www.kaggle.com/datasets/vikrishnan/iris-dataset [web:1]
+• Iris dataset — https://www.kaggle.com/datasets/uciml/iris
 • Titanic dataset — https://www.kaggle.com/datasets/yasserh/titanic-dataset [web:15]
 • sklearn Digits — built-in via sklearn.datasets.load_digits()
 

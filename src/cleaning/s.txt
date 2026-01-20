@@ -1,0 +1,97 @@
+SOFTWARE REASONING TEMPLATE
+===========================
+
+ANCHOR
+------
+What software unit is this?
+(if / function / class / module / pipeline step)
+
+
+STEP 0 — CLASSIFY
+-----------------
+What is being implemented?
+
+Definition:
+What is this unit?
+
+Responsibility:
+What SINGLE job does it perform?
+
+Trigger:
+When is this executed?
+
+Design Reason:
+Why must this exist as its own unit?
+
+Boundary:
+What must it NOT handle?
+
+
+STEP 1 — ISOLATE UNIT
+---------------------
+Name the operation in one short phrase.
+
+Remove:
+- UI
+- domain story
+- examples
+- side concerns
+
+
+STEP 2 — INPUT / OUTPUT
+-----------------------
+Input:
+What data enters?
+
+Output:
+What data leaves?
+
+Format:
+Primitive / object / table / state / signal?
+
+
+STEP 3 — SYSTEM POSITION
+------------------------
+Where does this live?
+
+BEFORE:
+What runs before it?
+
+AFTER:
+What consumes its output?
+
+Dependency role:
+Producer / transformer / consumer?
+
+
+STEP 4 — SCOPE CONTROL
+----------------------
+Included:
+What logic belongs here?
+
+Excluded:
+What logic must stay outside?
+
+
+STEP 5 — IMPLEMENTATION DECISION
+--------------------------------
+Reuse:
+Is there an existing library/tool?
+
+State:
+Stateless or stateful?
+
+Side effects:
+Allowed or forbidden?
+
+
+STEP 6 — RESOLVE
+----------------
+One-sentence contract:
+
+"Takes ___ and produces ___ for ___."
+
+
+FAIL–FAST
+---------
+If responsibility, inputs, or outputs are unclear — STOP and redesign.
