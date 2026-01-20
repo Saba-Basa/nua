@@ -42,4 +42,18 @@ What must it NOT handle?
 
 def split_xy(df : pd.DataFrame, target: str,drop: list[str] = None):
     
-    return 0
+    #---- input validation ----
+    #typecheck validation
+    #empty
+    #target error
+    #typeError
+    #keyerror
+    #drop error
+    
+    # --- split ----
+    
+    # extract y
+    # build X
+    #drop columns
+    
+    raise NotImplementedError("split_xy not implemented yet")
