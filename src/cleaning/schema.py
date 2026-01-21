@@ -6,6 +6,12 @@ import pandas as pd
 What is being implemented?
 - A function that splits a dataset into model inputs and targets.
 
+=========
+Operation = split dataset into X and y
+Name = split_xy
+Type = function
+=========
+
 What is this unit?
 - Schema splitter function (feature/target separation).
 
@@ -38,9 +44,67 @@ One structural change → one code location.
 What must it NOT handle?
 - Data cleaning (missing values, scaling, encoding).
 
+Isolate Unit
+
+A function that splits a dataset into model inputs and targets.
+
+A)
+splits a dataset into model inputs and targets.
+B)
+Split dataset
+C)
+Split table
+D)
+Table split
+
+INPUT 
+What is the input name?
+table
+
+What role does it play?
+Primary data
+
+What structure is it?
+Table
+
+What is its concrete type?
+Table / Matrix type - pandas.DataFrame
+
+Who owns this data?
+Caller-owned 
+
+OUTPUT
+What is the output name?
+X
+
+What role does it play?
+Primary result 
+
+What structure is it?
+Table - DataFrame
+
+What is its concrete type?
+pandas.DataFrame
+
+OUTPUT
+What is the output name?
+y
+
+What role does it play?
+Primary result 
+
+What structure is it?
+Collection -> pandas.Series, labled vector
+
+How many outputs are produced?
+Multiple -> table, collection
+
+Does this unit change anything OUTSIDE its main output artifacts?
+None
+
 """
 
-def split_xy(df : pd.DataFrame, target: str,drop: list[str] = None):
+def split_xy(df : pd.DataFrame, target: str,drop: list[str] = None)-> tuple[pd.DataFrame,pd.Series]:
     
     #---- input validation ----
     #typecheck validation

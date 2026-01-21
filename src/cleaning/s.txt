@@ -4,7 +4,7 @@ SOFTWARE REASONING TEMPLATE
 ANCHOR
 ------
 What software unit is this?
-(if / function / class / module / pipeline step)
+(function / class / module / pipeline step)
 
 
 STEP 0 — CLASSIFY
@@ -28,26 +28,620 @@ What must it NOT handle?
 
 
 STEP 1 — ISOLATE UNIT
----------------------
-Name the operation in one short phrase.
+=====================
+WHAT operation is it?
+Isolates Operation identity
 
-Remove:
-- UI
-- domain story
-- examples
-- side concerns
+INPUT:
+<raw description or code purpose>
+
+--------------------------------
+
+A) DELETE NON-COMPUTATION WORDS
+
+Cross out anything that answers:
+- Who uses this?
+- Where does it appear?
+- Why does it exist?
+- What product/domain is it for?
+- UI / API / business context
+- Examples
+
+Keep ONLY what changes data or state.
+
+Result:
+<short sentence>
+
+
+--------------------------------
+
+B) EXTRACT CORE ACTION
+
+Rewrite as:
+
+VERB + SINGLE COMPOSITE OBJECT
+
+Rules:
+- One verb only
+- One object only
+- No adjectives
+
+Result:
+<verb phrase>
+
+
+--------------------------------
+
+C) STRUCTURAL NORMALIZATION
+
+Replace semantic nouns with data structures:
+
+Apply:
+- dataset → table
+- file → stream/buffer
+- user → record
+- form → input fields
+- response → output payload
+- object → struct
+- list of items → collection
+- json → document
+- model input → feature matrix
+- target → vector
+- config → parameter set
+
+Result:
+<structure-based phrase>
+
+
+--------------------------------
+
+D) COMPRESS OPERATION LABEL
+
+Rules:
+- 2–4 words
+- Remove articles (a, the)
+- Prefer noun+noun or verb+noun
+
+Output:
+
+OPERATION NAME:
+<final label>
 
 
 STEP 2 — INPUT / OUTPUT
 -----------------------
-Input:
-What data enters?
 
-Output:
-What data leaves?
+INPUT
+-----
 
-Format:
-Primitive / object / table / state / signal?
+What is the input name?
+<name>
+
+What role does it play?
+[ ] Primary data      — main data being transformed
+[ ] Configuration     — parameters controlling behavior
+[ ] Control signal    — flags, modes, commands
+[ ] Context state     — shared/session state
+
+What structure is it?
+[ ] Primitive     — int, float, bool, string
+[ ] Collection    — list, array, set
+[ ] Table         — DataFrame, 2D array
+[ ] Object        — class instance / struct
+[ ] Stream        — iterator, file handle
+[ ] State         — mutable shared data
+[ ] Signal        — event / message
+
+What is its concrete type?
+(select closest match or write custom)
+
+[ ] Built-in primitive
+    Examples:
+    - int / float / bool / str (Python)
+    - int / double / boolean / String (Java)
+    - number / boolean / string (JS)
+
+[ ] Collection type
+    Examples:
+    - list / tuple / set / dict (Python)
+    - ArrayList / HashMap (Java)
+    - Array / Map / Set (JS)
+
+[ ] Table / Matrix type
+    Examples:
+    - pandas.DataFrame
+    - numpy.ndarray
+    - torch.Tensor
+    - 2D array
+
+[ ] Object / Struct type
+    Examples:
+    - CustomClass
+    - dataclass
+    - DTO / POJO
+    - Record / Struct
+
+[ ] Stream / IO type
+    Examples:
+    - file handle
+    - BufferedReader
+    - InputStream
+    - Iterator / Generator
+
+[ ] State / Context type
+    Examples:
+    - Session object
+    - Cache entry
+    - Redux store
+    - Global state object
+
+[ ] Signal / Message type
+    Examples:
+    - Event object
+    - Message queue payload
+    - HTTP Request / Response
+    - WebSocket message
+
+[ ] Custom / Domain type
+    Specify:
+    <type name>
+
+Who owns this data?
+[ ] Caller-owned       — input not modified
+[ ] New instance       — created internally
+[ ] In-place mutation  — modified directly
+
+
+OUTPUT
+------
+
+What is the output name?
+(Variable / return identifier)
+<name>
+
+What role does it play?
+[ ] Primary result     — main computation outcome
+[ ] Derived data       — helper/secondary result
+[ ] Control signal     — status/flag for flow control
+
+What structure is it?
+(Choose by DATA SHAPE and BEHAVIOR — not by library)
+
+
+[ ] Primitive    
+WHY:
+- Single atomic value
+- No internal structure
+- Represents one fact
+
+Examples:
+int, float, bool, string
+
+DO NOT choose if:
+- More than one value exists
+- Data is iterable or indexed
+
+
+------------------------------------------------
+
+
+[ ] Collection   
+WHY:
+- 1D sequence of multiple values
+- Indexable or iterable
+- Vector-like structure
+
+SUBTYPE (select one):
+
+[ ] Dense numeric vector
+    WHY:
+    - Continuous numeric values
+    - Fixed length
+    Examples:
+    numpy.ndarray (1D), torch.Tensor (1D)
+
+[ ] Labeled vector
+    WHY:
+    - Values associated with index/labels
+    Examples:
+    pandas.Series
+
+[ ] Generic list
+    WHY:
+    - Possibly heterogeneous values
+    - Order matters
+    Examples:
+    Python list, JS Array, Java List
+
+[ ] Sparse vector
+    WHY:
+    - Mostly zero values
+    - Memory optimized
+    Examples:
+    scipy.sparse vector
+
+DO NOT choose Collection if:
+- Data has rows AND columns → use Table
+- Represents a single structured entity → use Object
+
+
+------------------------------------------------
+
+
+[ ] Table        
+WHY:
+- 2D structured data (rows × columns)
+- Column schema exists
+- Dataset or matrix representation
+
+SUBTYPE (select one):
+
+[ ] Dense table
+    WHY:
+    - Fully materialized numeric/categorical data
+    Examples:
+    pandas.DataFrame, numpy 2D array
+
+[ ] Sparse table
+    WHY:
+    - Many missing/zero values
+    Examples:
+    scipy sparse matrix
+
+[ ] Indexed table
+    WHY:
+    - Requires row identifiers
+    Examples:
+    DataFrame with index/key column
+
+DO NOT choose Table if:
+- Only one column / 1D → use Collection
+- Represents one entity → use Object
+
+
+------------------------------------------------
+
+
+[ ] Object       
+WHY:
+- Represents ONE entity
+- Named attributes/fields
+- Semantic grouping
+
+SUBTYPE (select one):
+
+[ ] Plain data object
+    WHY:
+    - Data container only
+    Examples:
+    dataclass, DTO, struct
+
+[ ] Domain object
+    WHY:
+    - Contains behavior + data
+    Examples:
+    business entity class
+
+DO NOT choose Object if:
+- Homogeneous list of values → use Collection
+- Dataset-like structure → use Table
+
+
+------------------------------------------------
+
+
+[ ] Stream       
+WHY:
+- Data arrives sequentially over time
+- Not fully loaded in memory
+- Consumed progressively
+
+SUBTYPE (select one):
+
+[ ] File/IO stream
+    Examples:
+    file handle, InputStream
+
+[ ] Iterator/Generator
+    Examples:
+    Python generator, Java iterator
+
+[ ] Async stream
+    Examples:
+    async iterator, reactive stream
+
+DO NOT choose Stream if:
+- Entire dataset is already in memory → use Collection/Table
+
+
+------------------------------------------------
+
+
+[ ] State        
+WHY:
+- Mutable shared data
+- Persists across operations
+- Represents system memory
+
+SUBTYPE (select one):
+
+[ ] Session state
+    Examples:
+    user session object
+
+[ ] Cache state
+    Examples:
+    Redis entry, in-memory cache
+
+[ ] Global/shared state
+    Examples:
+    Redux store, singleton state
+
+DO NOT choose State if:
+- Temporary function input/output → use Collection/Object/Table
+
+
+------------------------------------------------
+
+
+[ ] Signal       
+WHY:
+- Represents event or message
+- Triggers behavior
+- Carries notification intent
+
+SUBTYPE (select one):
+
+[ ] Event object
+    Examples:
+    UI event, system event
+
+[ ] Message payload
+    Examples:
+    queue message, WebSocket message
+
+[ ] Request/Response
+    Examples:
+    HTTP request object
+
+DO NOT choose Signal if:
+- Data is stored or transformed → use Collection/Object/Table
+
+
+
+What is its concrete type?
+(Language / library specific)
+Examples:
+- pandas.DataFrame
+- pandas.Series
+- list[int]
+- torch.Tensor
+- CustomClass
+
+OUTPUT COUNT
+------------
+
+How many independent output artifacts leave this unit boundary?
+
+
+[ ] Single  
+
+WHY:
+- Exactly ONE artifact is produced
+- Output is consumed as ONE unit
+- No independent secondary artifact exists
+
+Choose this if:
+- There is one return object OR
+- There is one persistent effect OR
+- There is one emitted signal
+
+SUBTYPE (select one):
+
+
+[ ] Single value result
+
+WHY:
+- Output is ONE atomic value
+- No internal structure
+- Represents scalar information
+
+Examples:
+Numeric:
+- count, score, threshold
+
+Boolean:
+- success flag, validation result
+
+Text:
+- status message, label
+
+Identifier:
+- id, reference key
+
+
+--------------------------------
+
+
+[ ] Single data artifact
+
+WHY:
+- Output is ONE structured data container
+- Contains multiple values internally
+- Treated as ONE transferable unit
+
+Choose this if:
+- Output is a table, collection, object, or stream
+- Downstream consumes it as one entity
+
+Examples:
+- dataset table
+- object instance
+- vector/collection
+- stream handle
+
+DO NOT choose if:
+- Outputs are separated into independent artifacts
+
+
+--------------------------------
+
+
+[ ] Single state mutation
+
+WHY:
+- Unit modifies exactly ONE persistent state target
+- Effect is observable outside unit boundary
+
+Examples:
+- write one file
+- update one database record
+- modify one cache entry
+
+
+--------------------------------
+
+
+[ ] Single signal emission
+
+WHY:
+- Unit produces exactly ONE event/message
+- Used to trigger downstream behavior
+
+Examples:
+- emit one event
+- send one command
+- publish one message
+
+
+================================================
+
+
+[ ] Multiple  
+
+WHY:
+- More than ONE independent artifact is produced
+- Outputs are logically separable
+- Can be consumed independently
+
+Choose this if:
+- Two or more artifacts cross the boundary
+
+
+SUBTYPE (select one):
+
+
+[ ] Data + Data
+
+WHY:
+- Two or more independent data artifacts
+
+Examples:
+- two collections
+- table + vector
+- object + metadata object
+
+
+--------------------------------
+
+
+[ ] Data + State
+
+WHY:
+- Data is produced AND persistent state is modified
+
+Examples:
+- return object + save record
+- response payload + cache update
+
+
+--------------------------------
+
+
+[ ] Data + Signal
+
+WHY:
+- Data output AND event/message emission
+
+Examples:
+- return result + notify system
+
+
+--------------------------------
+
+
+[ ] State + State
+
+WHY:
+- Multiple persistent updates
+
+Examples:
+- update two database records
+- modify multiple caches
+
+
+--------------------------------
+
+
+[ ] Signal + Signal
+
+WHY:
+- Multiple events/messages emitted
+
+Examples:
+- broadcast notifications
+- multi-channel messaging
+
+
+================================================
+
+
+SIDE OUTPUTS
+------------
+
+Does this unit change anything OUTSIDE its main output artifacts?
+
+
+[ ] None
+
+WHY:
+- No external system affected
+- No global/shared state modified
+- Only return values are produced
+
+
+[ ] Logs
+
+WHY:
+- Writes human-readable diagnostics
+- Does not affect logic flow
+
+
+[ ] Metrics
+
+WHY:
+- Emits performance/monitoring signals
+- Used for observation, not logic
+
+
+[ ] Events
+
+WHY:
+- Triggers reactions in other systems
+- Causes behavior elsewhere
+
+
+--------------------------------
+
+
+DECISION PROCEDURE:
+
+Ask:
+
+"Does something change that is NOT part of the main output?"
+
+If YES → side output exists  
+If NO → None
 
 
 STEP 3 — SYSTEM POSITION
@@ -60,9 +654,27 @@ What runs before it?
 AFTER:
 What consumes its output?
 
-Dependency role:
-Producer / transformer / consumer?
+Dependency Role
+---------------
 
+Select ONE:
+
+[ ] PRODUCER
+Creates data or state.
+No required upstream computation input.
+
+[ ] TRANSFORMER
+Takes input and outputs transformed data.
+Passes result forward in pipeline.
+
+[ ] CONSUMER
+Uses input to produce final result or side effect.
+Terminates data flow.
+
+Decision Rule:
+If output feeds another computation → TRANSFORMER  
+If output is final artifact/side effect → CONSUMER  
+If input originates externally → PRODUCER
 
 STEP 4 — SCOPE CONTROL
 ----------------------
@@ -85,13 +697,30 @@ Side effects:
 Allowed or forbidden?
 
 
+STEP 5.5 — CODE BINDING
+-----------------------
+Unit Type:
+(function / class / module)
+
+Identifier Name:
+What will this unit be called in code?
+
+Input Signature:
+Parameter names and types?
+
+Output Signature:
+Return type and structure?
+
+Error Strategy:
+Fail-fast / exceptions / fallback?
+
+Side Effects:
+None / logging / IO / state?
+
+
 STEP 6 — RESOLVE
 ----------------
 One-sentence contract:
 
 "Takes ___ and produces ___ for ___."
 
-
-FAIL–FAST
----------
-If responsibility, inputs, or outputs are unclear — STOP and redesign.
