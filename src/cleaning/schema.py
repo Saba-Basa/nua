@@ -1,6 +1,5 @@
 import pandas as pd
-# split by x and y
-# return X, y
+from src.utils.loader import load_csv
 
 """
 What is being implemented?
@@ -102,6 +101,61 @@ Multiple -> table, collection
 Does this unit change anything OUTSIDE its main output artifacts?
 None
 
+What runs before it?
+Data loading
+
+What consumes its output?
+model, preprocessing
+
+Dependency Role
+Transformer
+
+SCOPE CONTROL
+---------------------
+Structural transformation
+y -> single column extraction
+x -> subset of columns, target values
+
+validation
+    type checking
+    empty DataFrame check
+    target column existence
+    KeyError handling
+    drop list validation
+
+
+IMPLEMENTATION DECISION
+---------------------
+Third-party library
+pandas
+
+operation I y extraction:
+    Operation:
+        extract column
+    target structure:
+        table
+    library tool:
+        pandas
+    capability category:
+        selection
+    api primitive
+        label-based indexing - DataFrame column selection
+        dataframeName[column_name]
+
+Operation II X extraction:
+    Operation:
+        Column subset selection
+    target structure:
+        table
+    library tool:
+        pandas
+    capability category:
+        Selection + Transformation
+    Api primitive:
+        column removal
+    
+
+
 """
 
 def split_xy(df : pd.DataFrame, target: str,drop: list[str] = None)-> tuple[pd.DataFrame,pd.Series]:
@@ -115,9 +169,19 @@ def split_xy(df : pd.DataFrame, target: str,drop: list[str] = None)-> tuple[pd.D
     #drop error
     
     # --- split ----
-    
     # extract y
+    y = df[target]
     # build X
-    #drop columns
+    if drop:
+        X = df.drop(columns=drop)
+    else:
+        X = df.drop(columns=[target])
     
-    raise NotImplementedError("split_xy not implemented yet")
+    # raise NotImplementedError("split_xy not implemented yet")
+    return y,X
+
+path = "data/Iris.csv"
+c = load_csv(path)
+# print(c)
+k = split_xy(c,"Species",["Id","Species"])
+print(k)

@@ -677,24 +677,556 @@ If output is final artifact/side effect → CONSUMER
 If input originates externally → PRODUCER
 
 STEP 4 — SCOPE CONTROL
-----------------------
-Included:
-What logic belongs here?
+---------------------
 
-Excluded:
-What logic must stay outside?
+INCLUDED LOGIC
+--------------
+What responsibilities are ALLOWED inside this unit?
+(select all that apply)
+
+
+[ ] Structural transformation
+WHY:
+- Changes data shape without changing meaning
+
+Includes:
+- splitting, merging
+- reshaping (wide ↔ long)
+- column/field reordering
+- schema mapping
+- renaming fields
+
+DO NOT include:
+- value normalization
+- statistical processing
+- domain interpretation
+
+
+--------------------------------
+
+
+[ ] Data selection / filtering
+WHY:
+- Chooses subset of existing data
+
+Includes:
+- column selection
+- row filtering by condition
+- field extraction
+- subset slicing
+
+DO NOT include:
+- feature engineering
+- derived calculations
+- business rule filtering
+
+
+--------------------------------
+
+
+[ ] Parameter interpretation
+WHY:
+- Uses function inputs to control behavior
+
+Includes:
+- interpreting flags
+- applying thresholds
+- selecting modes
+- routing logic based on parameters
+
+DO NOT include:
+- configuration loading
+- environment variable reading
+- dynamic runtime setup
+
+
+--------------------------------
+
+
+[ ] Validation (local)
+WHY:
+- Ensures inputs satisfy THIS unit’s contract
+
+Includes:
+- type checking
+- null/empty checks
+- field existence checks
+- shape validation
+
+DO NOT include:
+- cross-system validation
+- database consistency checks
+- business validation rules
+
+
+--------------------------------
+
+
+[ ] Pure computation
+WHY:
+- Deterministic transformation of input to output
+
+Includes:
+- arithmetic
+- aggregation
+- mapping functions
+- mathematical transforms
+
+DO NOT include:
+- IO
+- randomness without control
+- time-based logic
+
+
+--------------------------------
+
+
+[ ] Format / representation conversion
+WHY:
+- Changes representation without semantic change
+
+Includes:
+- object → table
+- table → array
+- encoding format conversion
+- serialization/deserialization (local only)
+
+DO NOT include:
+- storage writing
+- network transmission
+- compression pipelines
+
+
+--------------------------------
+
+
+[ ] Local error signaling
+WHY:
+- Reports violations of this unit’s responsibility
+
+Includes:
+- raising exceptions
+- returning error codes
+- validation errors
+
+DO NOT include:
+- retry logic
+- fallback logic
+- error recovery strategies
+
+
+================================================
+
+
+EXCLUDED LOGIC
+--------------
+What responsibilities are FORBIDDEN inside this unit?
+(select all that apply)
+
+
+[ ] External IO
+WHY:
+- Interacts with outside world
+
+Includes:
+- file reads/writes
+- database queries
+- API calls
+- hardware access
+
+FORBIDDEN because:
+- Breaks testability
+- Introduces side effects
+
+
+--------------------------------
+
+
+[ ] Persistence / storage management
+WHY:
+- Manages long-term data lifecycle
+
+Includes:
+- saving objects
+- loading state
+- caching layers
+- checkpoints
+
+FORBIDDEN because:
+- Belongs to infrastructure layer
+
+
+--------------------------------
+
+
+[ ] Domain / business rules
+WHY:
+- Application-specific decision logic
+
+Includes:
+- pricing rules
+- validation policies
+- workflow conditions
+- product logic
+
+FORBIDDEN because:
+- Makes unit non-reusable
+
+
+--------------------------------
+
+
+[ ] Workflow orchestration
+WHY:
+- Coordinates multiple units
+
+Includes:
+- pipeline control
+- task scheduling
+- branching logic
+- job coordination
+
+FORBIDDEN because:
+- Violates single responsibility
+
+
+--------------------------------
+
+
+[ ] Global/shared state management
+WHY:
+- Modifies system-wide memory
+
+Includes:
+- session updates
+- cache mutation
+- global variable access
+
+FORBIDDEN because:
+- Introduces hidden coupling
+
+
+--------------------------------
+
+
+[ ] User interface / presentation
+WHY:
+- Controls how results are shown
+
+Includes:
+- rendering
+- formatting for display
+- UI interaction
+
+FORBIDDEN because:
+- Mixing logic and presentation
+
+
+--------------------------------
+
+
+[ ] Monitoring / observability
+WHY:
+- Operational instrumentation
+
+Includes:
+- logging
+- metrics emission
+- tracing
+
+FORBIDDEN because:
+- Side-effect responsibility
+
+
+--------------------------------
+
+
+[ ] Error recovery strategies
+WHY:
+- Alters failure behavior
+
+Includes:
+- retries
+- fallback logic
+- circuit breakers
+
+FORBIDDEN because:
+- Belongs to control layer
+
+
+--------------------------------
+
+
+[ ] Security concerns
+WHY:
+- Access control and protection logic
+
+Includes:
+- authentication
+- authorization
+- encryption
+
+FORBIDDEN because:
+- Cross-cutting concern
+
+
+--------------------------------
+
+
+[ ] Performance optimization
+WHY:
+- Alters execution characteristics
+
+Includes:
+- caching
+- batching
+- parallelization
+
+FORBIDDEN because:
+- Architecture-level responsibility
+
+
+--------------------------------
+
+
+[ ] Resource management
+WHY:
+- Controls system resources
+
+Includes:
+- memory handling
+- thread pools
+- connection pools
+
+FORBIDDEN because:
+- Infrastructure concern
+
+
+--------------------------------
+
+
+[ ] Configuration loading
+WHY:
+- Reads environment/runtime settings
+
+Includes:
+- env variables
+- config files
+- runtime flags
+
+FORBIDDEN because:
+- Initialization responsibility
+
+
+================================================
+
+
+BOUNDARY VALIDATION
+-------------------
+
+Check all:
+
+[ ] Only transforms provided inputs
+[ ] No external system touched
+[ ] No hidden state modified
+[ ] One responsibility only
+
+If any unchecked → scope violation
 
 
 STEP 5 — IMPLEMENTATION DECISION
 --------------------------------
-Reuse:
-Is there an existing library/tool?
 
-State:
-Stateless or stateful?
+REUSE STRATEGY
+--------------
+Should existing tools/libraries be used?
 
-Side effects:
-Allowed or forbidden?
+[ ] Built-in language features
+WHY:
+- Prefer standard library for reliability and maintainability
+Examples:
+list operations, dict access, file utilities
+
+[ ] Third-party library
+WHY:
+- Specialized, optimized implementation exists
+Examples:
+pandas operations, numpy math, framework utilities
+
+[ ] Custom implementation
+WHY:
+- No suitable library exists
+- Special logic required
+- Performance or control constraints
+
+DECISION CHECK:
+Is this logic already implemented reliably elsewhere?
+[ ] Yes → Reuse
+[ ] No → Implement manually
+
+--------------------------------
+
+
+IMPLEMENTATION MAPPING
+----------------------
+IF REUSE
+
+For EACH core operation in this unit:
+
+Operation:
+<from STEP 1 / STEP 4>
+
+Target Structure:
+<from STEP 2>
+
+Library / Tool:
+<selected reuse tool>
+
+Capability Category:
+[ ] Selection
+[ ] Transformation
+[ ] Aggregation
+[ ] Conversion
+[ ] Validation
+[ ] IO
+
+API Primitive:
+<method / operator / function>
+
+Minimal Expression:
+<code snippet>
+
+
+STATE MODEL
+-----------
+Does this unit maintain internal state?
+
+[ ] Stateless
+WHY:
+- Output depends only on input parameters
+- No memory between calls
+- Easier to test and parallelize
+
+Choose if:
+- Pure function behavior
+- No cached values
+- No internal counters
+
+
+[ ] Stateful
+WHY:
+- Unit keeps memory across executions
+
+Choose if:
+- Caches results
+- Maintains counters
+- Stores session/context data
+
+STATE TYPE (if stateful):
+[ ] Local instance state
+[ ] Shared/global state
+[ ] Persistent state
+
+
+--------------------------------
+
+
+SIDE EFFECT POLICY
+------------------
+Are side effects allowed inside this unit?
+
+[ ] Forbidden (pure unit)
+WHY:
+- Predictable behavior
+- Easier testing
+- No hidden system impact
+
+Means:
+- No IO
+- No global state mutation
+- No external calls
+
+
+[ ] Restricted
+WHY:
+- Only specific controlled effects allowed
+
+Allowed effects:
+[ ] Logging
+[ ] Metrics
+[ ] Local caching
+[ ] Temporary file creation
+
+
+[ ] Allowed
+WHY:
+- Unit is designed to interact with system
+
+Allowed effects:
+[ ] File IO
+[ ] Database access
+[ ] Network communication
+[ ] Hardware interaction
+
+
+--------------------------------
+
+
+ERROR HANDLING POLICY
+---------------------
+How should this unit react to invalid input or failure?
+
+[ ] Fail-fast
+WHY:
+- Stop immediately on invalid input
+- Surface error to caller
+
+Examples:
+raise exception, return error code
+
+
+[ ] Graceful fallback
+WHY:
+- Continue execution with default behavior
+
+Examples:
+return default value, skip item
+
+
+[ ] Retry logic
+WHY:
+- Recover from transient failure
+
+Examples:
+retry on network error
+
+
+--------------------------------
+
+
+PERFORMANCE CONSTRAINTS
+-----------------------
+Are there performance requirements?
+
+[ ] None
+[ ] Low latency required
+[ ] High throughput required
+[ ] Memory constrained
+[ ] Real-time constraint
+
+
+--------------------------------
+
+
+THREADING / CONCURRENCY MODEL
+-----------------------------
+Is this unit concurrency-aware?
+
+[ ] Single-threaded
+[ ] Thread-safe
+[ ] Async-compatible
+[ ] Parallel execution safe
+
 
 
 STEP 5.5 — CODE BINDING
