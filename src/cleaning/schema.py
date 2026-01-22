@@ -160,6 +160,7 @@ Operation II X extraction:
 
 def split_xy(df : pd.DataFrame, target: str,drop: list[str] = None)-> tuple[pd.DataFrame,pd.Series]:
     
+    # TODO: implement validation
     #---- input validation ----
     #typecheck validation
     #empty
@@ -180,8 +181,9 @@ def split_xy(df : pd.DataFrame, target: str,drop: list[str] = None)-> tuple[pd.D
     # raise NotImplementedError("split_xy not implemented yet")
     return y,X
 
-path = "data/Iris.csv"
-c = load_csv(path)
-# print(c)
-k = split_xy(c,"Species",["Id","Species"])
-print(k)
+# path = "data/Titanic-Dataset.csv"
+# c = load_csv(path)
+# # print(c)
+# # print(c.columns)
+# k = split_xy(c,"Species",["Id","Species"])
+# print(k)

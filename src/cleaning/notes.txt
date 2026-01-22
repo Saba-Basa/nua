@@ -148,9 +148,38 @@ Pipeline:
       ======
 
 2. Preprocessing
-   - What must be cleaned or transformed before modeling?
-   - What preprocessing is suggested by data characteristics?
-   - What must be done BEFORE any model is built?
+   What is this thing?
+      Preprocessing is the pipeline stage that 
+      occurs after understanding the data and 
+      before building and evaluating a model.
+
+   What is its purpose?
+      to prepare the data so that models can be built 
+      and their performance can be reliably measured.
+
+   Where does it sit in the system or process?
+   When does it apply?
+      after data understanding and 
+      before model building and evaluation.
+
+   Under what situation is it used?
+      when preparing data for building and evaluating predictive models.
+      
+   What is it NOT responsible for?
+   What must it explicitly not do?
+      the data must be in a form suitable for model building and performance evaluation.
+
+   What must be true when it finishes?
+         predictors and outcomes must be prepared so the 
+         data can be split, models can be fit, 
+         and performance can be measured.
+
+   What rules limit it?
+      preprocessing must be guided by data characteristics and the modeling objective.
+
+   What can change depending on context or data?
+      the specific preprocessing steps depend on the structure, scale, and quality of the input data.
+
 
 3. Data Splitting
    - What data is used for training?
