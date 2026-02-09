@@ -182,22 +182,29 @@ Pipeline:
 
 
 3. Data Splitting
-   - What data is used for training?
-   - What data is used for evaluation?
-   - Why is this split appropriate for the prediction goal?
-   - What must NOT be reused during training?
+   1) WHAT IS IT?
+      
+
+   2) WHAT IS ITS PURPOSE?
+
+   3) WHERE DOES IT BELONG?
+
+   4) WHEN DOES IT APPLY?
+
+   5) WHAT ARE ITS LIMITS?
+
+   6) WHAT MUST BE TRUE?
+
+   7) WHAT CAN CHANGE?
+
+Predictor Data
+Estimating Performance
+Evaluatinv Several Models
+Model Selection
+
 
 4. Model Building
-   - What candidate model forms are considered?
-   - What assumptions do they encode?
-   - What parameters are estimated from training data?
 
 5. Model Evaluation
-   - What metric evaluates performance?
-   - How is overfitting avoided?
-   - What resampling strategy is used?
 
 6. Model Selection
-   - Which models are compared?
-   - On what evidence is one chosen?
-   - What risks remain after selection?

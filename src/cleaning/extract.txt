@@ -34,3 +34,18 @@ What constraints does it operate under?
 7) WHAT CAN CHANGE?
 ------------------
 What depends on context, data, or configuration?
+
+
+1) WHAT IS IT?
+
+2) WHAT IS ITS PURPOSE?
+
+3) WHERE DOES IT BELONG?
+
+4) WHEN DOES IT APPLY?
+
+5) WHAT ARE ITS LIMITS?
+
+6) WHAT MUST BE TRUE?
+
+7) WHAT CAN CHANGE?
