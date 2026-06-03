@@ -2,9 +2,8 @@
 PREREQUISITE
 
 Lists
+=================
 
-STEP 0 — CLASSIFY
------------------
 1) Definition:     What is this thing?
 --------------
     genus:  what wider category is it a kind of?
@@ -14,7 +13,7 @@ STEP 0 — CLASSIFY
     WRITE:        "A ___ is a [genus] that [differentia]."
         A list is a positional ordering mechanism that keeps duplicates.
 
-2) Function:       What does it do?
+1) Function:       What does it do?
 --------------
     mechanism: transform
         what goes in?
@@ -25,7 +24,7 @@ STEP 0 — CLASSIFY
             given raw values paired with sequential indices, 
             it produces a single, ordered structure with addressable slots.
 
-3) Condition:      When does it apply or occur?
+1) Condition:      When does it apply or occur?
 --------------
    Mechanism: trigger + precondition.
         What must already be true?
@@ -39,7 +38,7 @@ STEP 0 — CLASSIFY
 
         Resolve: "Use it when you need duplicates to stay separate and positions to keep their exact meaning, given a finite collection of valid data values."
 
-4) Design reason:  Why is it designed this way?
+1) Design reason:  Why is it designed this way?
 --------------
     Mechanism: contrast.
         What is the nearest alternative you would use instead?
@@ -51,7 +50,8 @@ STEP 0 — CLASSIFY
         for example:
             indices calculate memory slots directly (`base + index`), 
             flattening a 2D matrix coordinate `(row, col)` into a single row of RAM.
-5) Boundary:       What must it not do or include?
+1) Boundary:       What must it not do or include?
+--------------
    Mechanism: role purity.
     What nearby thing is it confused with?
         a Set, an Associative Map (Dictionary)
@@ -62,7 +62,29 @@ STEP 0 — CLASSIFY
         Not a Set (a list keeps duplicates), not a Map (found by position, not key),
 
 
+SYNTHESIS
+--------------
+A list is an ordered collection that keeps duplicates and maps each integer index to a stored value. it is used whenever order and repetition must be preserved, which a set or map would discard."
+
+
 
 F^n
+=================
+
+---------------------
+Definition:     What is this thing? F^n
+    Mechanism: genus + differentia.
+
+    What wider category is it a kind of?
+    
+    What one trait separates it from the nearest other member?
+    Resolve: "A ___ is a [category] that [distinguishing trait]."
+
+
+
+
 Matrix
+=================
+
 Matrix multiplication
+=================
