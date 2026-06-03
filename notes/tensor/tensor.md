@@ -74,9 +74,41 @@ F^n
 ---------------------
 Definition:     What is this thing? F^n
     Mechanism: genus + differentia.
+    Genus:
+        𝐅𝑛 is the set of all lists of length 𝑛 of elements of 𝐅.
+        Or in other words
+        𝔽ⁿ is the Cartesian product of a field with itself n times, which forms the set of all ordered lists of length n of elements of 𝔽.
+        
+        • 𝔽 (Field) (Axler)
+            A set with two distinct elements 0 and 1, plus operations + and ×-. Satisfying all 6 properties below.
+
+            commutativity
+                a+b = b+a ,  ab = ba
+            associativity
+                (a+b)+c = a+(b+c)
+            identities
+                a+0=a , a·1=a
+            additive inverse
+                a + (−a) = 0
+            multiplicative inverse
+                a · (1/a) = 1
+            distributivity
+                a(b+c) = ab + ac
+
+        
+
+        • Elements of 𝔽
+        • List
+        • Length n
+        • Ordered
+        • Cartesian product
+        • 𝔽ⁿ (The resulting set)
+
+
+
 
     What wider category is it a kind of?
-    
+
     What one trait separates it from the nearest other member?
     Resolve: "A ___ is a [category] that [distinguishing trait]."
 
