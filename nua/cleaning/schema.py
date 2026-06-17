@@ -1,5 +1,5 @@
 import pandas as pd
-from src.utils.loader import load_csv
+from nua.utils.loader import load_csv
 
 """
 What is being implemented?
