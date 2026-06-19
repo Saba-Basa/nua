@@ -1,0 +1,50 @@
+ANSWER-DERIVATION
+=================================
+
+ANCHOR
+------
+What kind of question is this?
+
+
+STEP 0 — CLASSIFY
+-----------------
+What is being asked?
+
+Definition:     What is this thing?
+Function:       What does it do?
+Condition:      When does it apply or occur?
+Design reason:  Why is it designed this way?
+Boundary:       What must it not do or include?
+
+
+STEP 1 — ISOLATE THE SUBJECT
+----------------------------
+What exact thing is the question about?
+Can I name it as a single object or concept?
+Have I removed examples and story?
+
+
+STEP 2 — IDENTIFY RELATION
+--------------------------
+How does this thing relate to others?
+As an input, output, constraint, comparison,
+pipeline step, or responsibility?
+
+
+STEP 3 — SET BOUNDARIES
+----------------------
+What is included in the answer?
+What is explicitly excluded?
+What cannot be concluded from the information given?
+
+
+STEP 4 — RESOLVE
+----------------
+State the answer in one sentence.
+Only guarantees, no guesses.
+No examples or extra explanation.
+
+
+FAIL-FAST
+---------
+If the subject or relation is unclear, restart at classification.

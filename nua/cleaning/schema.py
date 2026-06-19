@@ -1,0 +1,189 @@
+import pandas as pd
+from nua.utils.loader import load_csv
+
+"""
+What is being implemented?
+- A function that splits a dataset into model inputs and targets.
+
+=========
+Operation = split dataset into X and y
+Name = split_xy
+Type = function
+=========
+
+What is this unit?
+- Schema splitter function (feature/target separation).
+
+What SINGLE job does it perform?
+- Splits a raw DataFrame into feature matrix X and target vector y.
+
+When is this executed?
+=========
+PIPELINE:
+    1 Load data
+    2 Schema split (X / y separation)
+    3 Cleaning (impute, scale, encode)
+    4 Train model
+=========
+- Executed after data loading to define modeling inputs and targets.
+
+Why must this exist as its own unit?
+- Schema splitting is isolated so that changing column names or roles only requires changing ONE place in the code.
+
+Example:
+Before: target = "Species"
+After:  target = "FlowerType"
+
+Schema function logic stays fixed.
+Only the target parameter changes.
+
+Rule:
+One structural change → one code location.
+
+What must it NOT handle?
+- Data cleaning (missing values, scaling, encoding).
+
+Isolate Unit
+
+A function that splits a dataset into model inputs and targets.
+
+A)
+splits a dataset into model inputs and targets.
+B)
+Split dataset
+C)
+Split table
+D)
+Table split
+
+INPUT 
+What is the input name?
+table
+
+What role does it play?
+Primary data
+
+What structure is it?
+Table
+
+What is its concrete type?
+Table / Matrix type - pandas.DataFrame
+
+Who owns this data?
+Caller-owned 
+
+OUTPUT
+What is the output name?
+X
+
+What role does it play?
+Primary result 
+
+What structure is it?
+Table - DataFrame
+
+What is its concrete type?
+pandas.DataFrame
+
+OUTPUT
+What is the output name?
+y
+
+What role does it play?
+Primary result 
+
+What structure is it?
+Collection -> pandas.Series, labled vector
+
+How many outputs are produced?
+Multiple -> table, collection
+
+Does this unit change anything OUTSIDE its main output artifacts?
+None
+
+What runs before it?
+Data loading
+
+What consumes its output?
+model, preprocessing
+
+Dependency Role
+Transformer
+
+SCOPE CONTROL
+---------------------
+Structural transformation
+y -> single column extraction
+x -> subset of columns, target values
+
+validation
+    type checking
+    empty DataFrame check
+    target column existence
+    KeyError handling
+    drop list validation
+
+
+IMPLEMENTATION DECISION
+---------------------
+Third-party library
+pandas
+
+operation I y extraction:
+    Operation:
+        extract column
+    target structure:
+        table
+    library tool:
+        pandas
+    capability category:
+        selection
+    api primitive
+        label-based indexing - DataFrame column selection
+        dataframeName[column_name]
+
+Operation II X extraction:
+    Operation:
+        Column subset selection
+    target structure:
+        table
+    library tool:
+        pandas
+    capability category:
+        Selection + Transformation
+    Api primitive:
+        column removal
+    
+
+
+"""
+
+def split_xy(df : pd.DataFrame, target: str,drop: list[str] = None)-> tuple[pd.DataFrame,pd.Series]:
+    
+    # TODO: implement validation
+    #---- input validation ----
+    #typecheck validation
+    #empty
+    #target error
+    #typeError
+    #keyerror
+    #drop error
+    
+    # --- split ----
+    # extract y
+    y = df[target]
+    # build X
+    if drop:
+        X = df.drop(columns=drop)
+    else:
+        X = df.drop(columns=[target])
+    
+    # raise NotImplementedError("split_xy not implemented yet")
+    return y,X
+
+# path = "data/Titanic-Dataset.csv"
+# c = load_csv(path)
+# # print(c)
+# # print(c.columns)
+# k = split_xy(c,"Species",["Id","Species"])
+# print(k)

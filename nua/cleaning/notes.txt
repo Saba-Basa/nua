@@ -1,0 +1,210 @@
+
+[Data responsibility]
+
+Decide which variables are relevant predictors and which variable is the target, 
+excluding irrelevant or confounding information.
+
+In predictive modeling, expert knowledge is needed to choose relevant data, 
+because irrelevant or confounding information can weaken the predictive signal and harm model performance.
+(Kuhn & Johnson, Applied Predictive Modeling, 2013, Ch. 1.2)
+
+[Notation]
+- X : all predictors (features), shape (n, P)
+    X  (NumPy array / pandas DataFrame)
+
+- y : target / response, length n
+    y  (1D array / Series)
+
+- x_ij : value of feature j for sample i
+    X[i, j] or X.iloc[i, j]
+
+- x_i : feature vector for sample i (row i of X)
+    code: X[i, :] or X.iloc[i, :]
+
+- n : number of samples (rows)
+- P : number of features (columns)
+
+(Kuhn & Johnson – Applied Predictive Modeling, Ch. 1.6 “Notation”)
+
+[PREDICTIVE MODELING PROCESS]
+
+Major Question:
+How do we correctly transform raw data into a model that generalizes?
+
+Pipeline:
+
+1. Data Understanding
+   - What is the prediction objective?
+   Definition:
+    "The predictors, independent variables, attributes, 
+    or descriptors are the data used as input for the prediction equation."
+    (Kuhn & Johnson, Applied Predictive Modeling, 2013, Ch. 1.3)
+    - the input data
+    Function:
+    - represent the input data
+    Condition:
+    It applies when a predictive model is constructed or used to generate predictions
+    for example:
+    when computing ^y(target) from X (all predictors: features).
+    Design reason:
+    Why is this concept structured this way?
+    - to separate inputs from the quantity being predicted
+    - so the model can learn a mapping X->y
+    (fitting a function from inputs to 
+    outputs under an error criterion)
+    Boundary:
+    they're seperate to what?.
+    Predictors must not include or encode the target.
+    the target is the output.
+
+   - What is X (predictors)?
+   Definition:
+      - X is a matrix of predictors with n rows (data points) and P columns (predictors)
+   Function: What role does X play in the modeling process?
+      - X provides the input data from which the model computes predictions.
+   Condition: when does X apply or occur?
+      - it applies when a predictive model is constructed and needs input data to generate predictions.
+   Design reason: 
+      Why is X represented as a matrix with 
+      rows = data points and columns = predictors?
+      What would break if X were not structured this way?
+      -Rows represent samples and columns represent predictors 
+      because learning algorithms rely on linear algebra operations 
+      such as parameter estimation, similarity measurement, 
+      and model updates that require each data point 
+      to be represented as a vector in a fixed feature space.
+
+      ======
+      WHY A VECTOR SPACE?
+
+      Learning algorithms rely on linear algebra.
+
+      • Parameters: each predictor needs a fixed position so parameters stay aligned.
+      • Comparison: distance, similarity, and projection only exist for vectors.
+      • Learning: gradients and updates require coordinates and vector operations.
+
+      Therefore:
+      - predictors = dimensions
+      - samples = vectors
+      - X = matrix of vectors
+
+      This is a structural necessity, not a design choice.
+
+      ======
+   Boundary: What would contaminate or invalidate X as pure input data?
+      - X must not include or encode the target, or any information derived from it.
+      Boundaries protect role purity-> the role of X is to provides the input data
+
+   - What is y (target)?
+   Definition:     What is this thing?
+      - Is a vector of all n outcome values
+      - y is the real observed outcome value in the dataset.
+   Function:       What does it do?
+      - Provides the ground truth values the model learns to predict.
+   Condition:      When does it apply or occur?
+ 
+      During training:
+      - Model predicts ŷ
+      - ŷ is compared to y
+      - Error is computed
+      - Model parameters are updated
+
+      y is needed to teach the model.
+
+      During evaluation:
+      - Model predicts ŷ
+      - ŷ is compared to y
+      - Performance metric is computed
+
+      y is needed to judge model quality.
+
+   Design reason:  Why is it designed this way?
+   - Y is designed to represent real, 
+   measured outcomes, 
+   enabling predictions to be compared with the actual results 
+   and allowing model error to be computed in supervised learning.
+
+   Boundary:       What must it not do or include?
+   -> Boundary is about role puraty
+      - y must not
+         contain predictions (ŷ).
+         include input features (X).
+         be modified by the model.
+
+      ======
+
+      Prediction vs Target
+
+      y   = true observed outcome (ground truth)
+      ŷ   = model prediction
+
+      Learning minimizes the difference between y and ŷ.
+
+      Example (car fuel economy):
+      X = engine displacement, weight, cylinders
+      y = measured fuel efficiency in km/L
+      ŷ = predicted fuel efficiency in km/L
+
+      ======
+
+2. Preprocessing
+   What is this thing?
+      Preprocessing is the pipeline stage that 
+      occurs after understanding the data and 
+      before building and evaluating a model.
+
+   What is its purpose?
+      to prepare the data so that models can be built 
+      and their performance can be reliably measured.
+
+   Where does it sit in the system or process?
+   When does it apply?
+      after data understanding and 
+      before model building and evaluation.
+
+   Under what situation is it used?
+      when preparing data for building and evaluating predictive models.
+      
+   What is it NOT responsible for?
+   What must it explicitly not do?
+      the data must be in a form suitable for model building and performance evaluation.
+
+   What must be true when it finishes?
+         predictors and outcomes must be prepared so the 
+         data can be split, models can be fit, 
+         and performance can be measured.
+
+   What rules limit it?
+      preprocessing must be guided by data characteristics and the modeling objective.
+
+   What can change depending on context or data?
+      the specific preprocessing steps depend on the structure, scale, and quality of the input data.
+
+
+3. Data Splitting
+   1) WHAT IS IT?
+      
+
+   2) WHAT IS ITS PURPOSE?
+
+   3) WHERE DOES IT BELONG?
+
+   4) WHEN DOES IT APPLY?
+
+   5) WHAT ARE ITS LIMITS?
+
+   6) WHAT MUST BE TRUE?
+
+   7) WHAT CAN CHANGE?
+
+Predictor Data
+Estimating Performance
+Evaluatinv Several Models
+Model Selection
+
+
+4. Model Building
+
+5. Model Evaluation
+
+6. Model Selection
