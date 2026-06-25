@@ -6,3 +6,6 @@ build-backend = "hatchling.build"
 name = "nua"
 version = "0.1.0"
 dependencies=["xgboost"]
+
+[tool.setuptools.packages.find]
+include = ["nua*"]

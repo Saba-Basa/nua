@@ -24,7 +24,7 @@ class Classifier(ABC):
             y — target labels
             f — learning algorithm estimating parameters that best explain y given X
         """
-        pass
+        raise NotImplementedError
     
     
     #apply what was learned
@@ -41,4 +41,4 @@ class Classifier(ABC):
             θ̂ — parameters estimated during fit()
             g — decision rule or inference function
         """
-        pass
+        raise NotImplementedError
